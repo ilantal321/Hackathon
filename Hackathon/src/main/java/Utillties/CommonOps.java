@@ -28,7 +28,8 @@ public class CommonOps extends Base {
 
     @AfterClass
     public void closeSession(){
-        webDriver.close();
+
+        //webDriver.close();
     }
 
     @Attachment(value = "Page Screen-Shot", type = "image/png")

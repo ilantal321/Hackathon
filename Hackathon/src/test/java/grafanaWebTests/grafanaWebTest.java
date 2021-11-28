@@ -10,4 +10,12 @@ public class grafanaWebTest extends CommonOps {
     public void Test01_loginToGrafana(){
         WorkFlow.loginToGrafana(ManageDDT.getData("UserName"),ManageDDT.getData("Password"));
     }
+    @Test
+    public void Test02_addNewUser(){
+        WorkFlow.addUserTOGrafana();
+    }
+    @Test
+    public void Test03_deleteNewUser(){
+        WorkFlow.deleteUserInGrafana();
+    }
 }
