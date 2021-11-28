@@ -1,5 +1,6 @@
 package Utillties;
 
+import extensions.ExtensionGrafanaWeb;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -22,6 +23,7 @@ public class CommonOps extends Base {
         webDriver.get("http://localhost:3000");
         ManagerPages.makePOLoginPage();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        extensionGrafanaWeb=new ExtensionGrafanaWeb();
     }
 
     @AfterClass
