@@ -1,6 +1,8 @@
 package workFlows;
 
 import Utillties.CommonOps;
+import Utillties.ManageDDT;
+import Utillties.Verification;
 import extensions.ExtensionGrafanaWeb;
 import extensions.Extensions;
 import io.qameta.allure.Step;
@@ -13,6 +15,7 @@ public class WorkFlow extends CommonOps {
         extensionGrafanaWeb.sendKeys(loginPage.getText_password(),password);
         extensionGrafanaWeb.click(loginPage.getBtn_login());
         extensionGrafanaWeb.click(loginPage.getBtn_skip());
+        Verification.verifyStrings(webDriver.getTitle(), ManageDDT.getData("HomePageTitle"));
     }
 
 }

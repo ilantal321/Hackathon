@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Env>
+    <UserName>admin</UserName>
+    <Password>admin</Password>
+    <URL>http://localhost:3000/</URL>
+    <HomePageTitle>Home - Grafana</HomePageTitle>
+</Env>

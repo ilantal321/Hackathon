@@ -20,7 +20,7 @@ public class CommonOps extends Base {
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
-        webDriver.get("http://localhost:3000");
+        webDriver.get(ManageDDT.getData("URL"));
         ManagerPages.makePOLoginPage();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         extensionGrafanaWeb=new ExtensionGrafanaWeb();
