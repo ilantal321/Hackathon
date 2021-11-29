@@ -3,5 +3,6 @@
     <UserName>admin</UserName>
     <Password>admin</Password>
     <URL>http://localhost:3000/</URL>
+    <URLPluginsMySql>plugins/mysql?page=overview</URLPluginsMySql>
     <HomePageTitle>Home - Grafana</HomePageTitle>
 </Env>
