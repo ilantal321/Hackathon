@@ -24,12 +24,17 @@ public class CommonOps extends Base {
         ManagerPages.makePOLoginPage();
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         extensionGrafanaWeb=new ExtensionGrafanaWeb();
+
+
+        //dashboard
+        ManagerPages.makedashboardPage();
+
     }
 
-    @AfterClass
-    public void closeSession(){
-        webDriver.close();
-    }
+//    @AfterClass
+//    public void closeSession(){
+//        webDriver.close();
+//    }
 
     @Attachment(value = "Page Screen-Shot", type = "image/png")
     public static byte[] saveScreenshot() {

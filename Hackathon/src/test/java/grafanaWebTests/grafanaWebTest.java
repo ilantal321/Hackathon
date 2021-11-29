@@ -10,4 +10,9 @@ public class grafanaWebTest extends CommonOps {
     public void Test01_loginToGrafana(){
         WorkFlow.loginToGrafana(ManageDDT.getData("UserName"),ManageDDT.getData("Password"));
     }
+
+    @Test
+    public void addNewDashboard() throws InterruptedException {
+        WorkFlow.dashobardCreateAndVerify();
+    }
 }

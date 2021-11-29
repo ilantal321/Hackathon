@@ -7,4 +7,9 @@ public class Verification {
     public static void verifyStrings(String actual,String expected){
         assertEquals(actual,expected);
     }
+
+    @Step("verify not equal")
+    public static void verifyNotEqual(String actual,String expected){
+        assertNotEquals(actual,expected);
+    }
 }
