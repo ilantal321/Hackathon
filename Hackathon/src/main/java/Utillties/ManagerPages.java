@@ -2,6 +2,7 @@ package Utillties;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
+import pageObjects.DashboardPage;
 import pageObjects.LoginPage;
 import pageObjects.MenuComponent;
 import pageObjects.PluginsPage;
@@ -21,6 +22,12 @@ public class ManagerPages extends CommonOps{
     public static void makePOPluginsPage()
     {
          pluginsPage= PageFactory.initElements(webDriver, PluginsPage.class);
+    }
+
+    @Step("make dashboad Page")
+    public static void makedashboardPage()
+    {
+        dashboardPage= PageFactory.initElements(webDriver, DashboardPage.class);
     }
 
 }
