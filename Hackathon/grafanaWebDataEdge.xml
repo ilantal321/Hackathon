@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Env>
+    <WebPlatform>Edge</WebPlatform>
+    <UserName>admin</UserName>
+    <Password>admin</Password>
+    <URL>http://localhost:3000/</URL>
+    <URLPluginsMySql>plugins/mysql?page=overview</URLPluginsMySql>
+    <HomePageTitle>Home - Grafana</HomePageTitle>
+    <NewName>ilan</NewName>
+    <NewEmail>Shira@gmail.com</NewEmail>
+    <NewUserName>Tehila123</NewUserName>
+    <NewPassword>123456789</NewPassword>
+    <xmlFileName>grafanaWebDataEdge</xmlFileName>
+
+</Env>

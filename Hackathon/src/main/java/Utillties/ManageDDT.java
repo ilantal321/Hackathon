@@ -49,20 +49,6 @@ public class ManageDDT {
         }
         return records;
     }
-    public static String getData (String nodeName) {
-        DocumentBuilder dBuilder;
-        Document doc = null;
-        File fXmlFile = new File("./grafanaWebData.xml");
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        try {
-            dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(fXmlFile);
-        }
-        catch(Exception e) {
-            System.out.println("Exception in reading XML file: " + e);
-        }
-        doc.getDocumentElement().normalize();
-        return doc.getElementsByTagName(nodeName).item(0).getTextContent();
-    }
+
 }
 
