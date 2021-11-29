@@ -12,8 +12,8 @@ public class ManagerPages extends CommonOps{
         loginPage= PageFactory.initElements(webDriver, LoginPage.class);
     }
 
-    @Step("make dashboad Page")
-    public static void makedashboardPage()
+    @Step("Make Dashboard Page")
+    public static void makeDashboardPage()
     {
         dashboardPage= PageFactory.initElements(webDriver, DashboardPage.class);
     }
