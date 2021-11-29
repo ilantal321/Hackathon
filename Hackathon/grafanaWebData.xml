@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Env>
+    <WebPlatform>Chrome</WebPlatform>
     <UserName>admin</UserName>
     <Password>admin</Password>
     <URL>http://localhost:3000/</URL>
