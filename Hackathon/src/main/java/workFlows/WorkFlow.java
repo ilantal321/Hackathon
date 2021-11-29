@@ -6,7 +6,11 @@ import Utillties.Verification;
 import extensions.ExtensionGrafanaWeb;
 import extensions.Extensions;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import pageObjects.DashboardPage;
+
+import java.security.Key;
 
 public class WorkFlow extends CommonOps {
     @Step("Login to Grafana")
@@ -17,6 +21,8 @@ public class WorkFlow extends CommonOps {
         extensionGrafanaWeb.click(loginPage.getBtn_skip());
         Verification.verifyStrings(webDriver.getTitle(), ManageDDT.getData("HomePageTitle"));
     }
+
+
     @Step("add User To Grafana")
     public static void addUserTOGrafana(){
         extensionGrafanaWeb.click(loginPage.getBtn_users());
@@ -34,5 +40,18 @@ public class WorkFlow extends CommonOps {
         extensionGrafanaWeb.click(loginPage.getBtn_deleteUser());
         extensionGrafanaWeb.click(loginPage.getBtn_deleteUserMassage());
         Verification.verifyElementNotExist(loginPage.getLabel_NewUserInTable());
+    }
+
+    @Step("Create & verify Dashboard")
+    public static void dashobardCreateAndVerify() throws InterruptedException {
+        extensionGrafanaWeb.click(dashboardPage.getBtn_create_category());
+        extensionGrafanaWeb.click(dashboardPage.getBtn_addPanel());
+        extensionGrafanaWeb.sendKeys(dashboardPage.getBtn_chooseFromList(), "grafana");
+        dashboardPage.getBtn_chooseFromList().sendKeys((Keys.RETURN));
+        extensionGrafanaWeb.click(dashboardPage.getBtn_save());
+        extensionGrafanaWeb.sendKeys(dashboardPage.getTxt_dashboardName(), "test_dashboard");
+        extensionGrafanaWeb.click(dashboardPage.getBtn_finallySave());
+        Verification.verifyNotEqual(String.valueOf(dashboardPage.getDashboards_size().size()),"0");
+
     }
 }
