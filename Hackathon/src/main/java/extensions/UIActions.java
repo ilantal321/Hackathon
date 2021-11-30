@@ -9,7 +9,7 @@ public class UIActions extends Extensions {
         elem.sendKeys(key);
     }
     @Step ("click")
-    public  void click(WebElement elem){
+    public void click(WebElement elem){
         elem.click();
     }
 }
