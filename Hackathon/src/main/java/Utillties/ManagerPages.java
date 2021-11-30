@@ -2,6 +2,7 @@ package Utillties;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
+import pageObjects.calculator.CalculatorPage;
 import pageObjects.gafana.DashboardPage;
 import pageObjects.gafana.LoginPage;
 import pageObjects.gafana.MenuComponent;
@@ -35,17 +36,20 @@ public class ManagerPages extends CommonOps{
 
     @Step("appium")
     public static void makeAppium(){
-        basicWeightSection =new basicWeightSection(driver);
+        basicWeightSection =new basicWeightSection(Androiddriver);
     }
 
     @Step("appium")
     public static void AppiumLivingSection(){
-        livingTempSection =new livingTempSection(driver);
+        livingTempSection =new livingTempSection(Androiddriver);
     }
 
     @Step("appiumLivingCurrencySection")
     public static void appiumLivingCurrencySection(){
-        livingCurrencySection =new livingCurrencySection(driver);
+        livingCurrencySection =new livingCurrencySection(Androiddriver);
     }
+
+    @Step("Make calculator Page")
+    public static void makeCalculatorPage(){ calculatorPage = PageFactory.initElements(windowsDriver, CalculatorPage.class);}
 
 }

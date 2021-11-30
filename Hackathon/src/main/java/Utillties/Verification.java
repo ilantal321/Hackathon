@@ -26,4 +26,5 @@ public class Verification {
     public static void verifyNotEqual(String actual, String expected) {
         assertNotEquals(actual, expected);
     }
+
 }

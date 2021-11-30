@@ -3,9 +3,11 @@ package Utillties;
 import extensions.UIActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,11 +15,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.w3c.dom.Document;
+import pageObjects.calculator.CalculatorPage;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,57 +36,84 @@ import java.util.logging.Level;
 
 public class CommonOps extends Base {
 
+    @Parameters({ "PlatformName" ,"Driver"})
     @BeforeClass
-    public void startSession() throws MalformedURLException {
-
-//
-//
-//        if (getData("WebPlatform").equals("Chrome")) {
-//            WebDriverManager.chromedriver().setup();
-//            webDriver = new ChromeDriver();
-//        }
-//        else if (getData("WebPlatform").equals("FireFox")) {
-//            WebDriverManager.firefoxdriver().setup();
-//            webDriver = new FirefoxDriver();
-//        }
-//        else if (getData("WebPlatform").equals("Edge")) {
-//            WebDriverManager.edgedriver().setup();
-//            webDriver = new EdgeDriver();
-//        }
-//        webDriver.manage().window().maximize();
-//        webDriver.get(getData("URL"));
-//        ManagerPages.makePOLoginPage();
-//        ManagerPages.makePOMenuPage();
-//        ManagerPages.makePOPluginsPage();
-//        ManagerPages.makeDashboardPage();
-//        screen=new Screen();
-//        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        grafanaUIActions = new UIActions();
-
-//        //dashboard
-//        ManagerPages.makeDashboardPage();
-//        grafanaUIActions=new UIActions();
-//        actions=new Actions(webDriver);
+    public void startSession(String platformName ,String driver) throws java.net.MalformedURLException{
+        if (platformName.equals("Desktop")) {
+            initWindowsDriver();
+        }
+        else if (platformName.equals("web") ) {
+            initWebDriver(driver);
+        }
+        else if((platformName.equals("Appium"))){
+            initAndroidDriver();
+        }
+    }
 
 
-        //appium
+    @Step("Open web driver")
+    public void initWebDriver(String driver) throws MalformedURLException {
+        if (driver.equals("Chrome")) {
+            WebDriverManager.chromedriver().setup();
+            webDriver = new ChromeDriver();
+        } else if (driver.equals("FireFox")) {
+            WebDriverManager.firefoxdriver().setup();
+            webDriver = new FirefoxDriver();
+        } else if (driver.equals("Edge")) {
+            WebDriverManager.edgedriver().setup();
+            webDriver = new EdgeDriver();
+        }
+        webDriver.manage().window().maximize();
+        webDriver.get(getData("URL"));
+        ManagerPages.makePOLoginPage();
+        ManagerPages.makePOMenuPage();
+        ManagerPages.makePOPluginsPage();
+        ManagerPages.makeDashboardPage();
+        screen = new Screen();
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        grafanaUIActions = new UIActions();
 
+        //dashboard
+        ManagerPages.makeDashboardPage();
+        grafanaUIActions = new UIActions();
+        actions = new Actions(webDriver);
+
+
+    }
+
+
+    @Step("Open windows driver")
+    public void initWindowsDriver() throws MalformedURLException {
+        capabilities = new DesiredCapabilities();
+        capabilities.setCapability("app", calcApp);
+        windowsDriver = new WindowsDriver(new URL("http://127.0.0.1:4723"), capabilities);
+        windowsDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        ManagerPages.makeCalculatorPage();
+        grafanaUIActions = new UIActions();
+    }
+
+    @Step("Open appium driver")
+    public void initAndroidDriver() throws MalformedURLException {
         dc.setCapability("reportDirectory", reportDirectory);
         dc.setCapability("reportFormat", reportFormat);
         dc.setCapability("testName", testName);
         dc.setCapability(MobileCapabilityType.UDID, "d030a260");
-        driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
-        driver.setLogLevel(Level.INFO);
+        Androiddriver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
+        Androiddriver.setLogLevel(Level.INFO);
         ManagerPages.makeAppium();
         ManagerPages.AppiumLivingSection();
         ManagerPages.appiumLivingCurrencySection();
 
-
-
-
-
-
     }
+
+    @Parameters({ "PlatformName" })
+    @BeforeMethod
+    public void Clear(String platformName) {
+        if (platformName.equals("Desktop")) {
+            windowsDriver.findElement(By.xpath("//*[@AutomationId='clearButton']")).click();
+        }
+    }
+
 @Step("check if plugin mySql found when search it")
 public void checkPlugins() throws FindFailed {
     actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
@@ -92,14 +126,20 @@ public void checkPlugins() throws FindFailed {
     pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
     screen.click(pathOfMySqlPic,70);
     Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
-
-
 }
-//    @AfterClass
-//    public void closeSession(){
-//        webDriver.close();
-//
-//    }
+
+    @Parameters({ "PlatformName" })
+    @AfterClass
+    public void closeSession(String platformName){
+        if (platformName.equals("Desktop")) {
+            windowsDriver.close();
+        }
+        if (platformName.equals("web")) {
+            webDriver.close();
+        }if (platformName.equals("Appium")) {
+            Androiddriver.close();
+        }
+    }
 
         @Attachment(value = "Page Screen-Shot", type = "image/png")
         public static byte[] saveScreenshot () {

@@ -34,7 +34,7 @@ public class MobileFlows extends CommonOps {
         MobileUIActions.click(livingCurrencySection.btn_settings);
         MobileUIActions.click(livingCurrencySection.btn_currencyChange);
         MobileUIActions.click(livingCurrencySection.getBtn_ruppeChoose());
-        driver.navigate().back();
+        Androiddriver.navigate().back();
         Verification.verifyNotEqual(livingCurrencySection.getTxt_INRResult().getText(),"ILS");
 
 

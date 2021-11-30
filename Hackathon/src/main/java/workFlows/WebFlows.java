@@ -16,7 +16,6 @@ public class WebFlows extends CommonOps {
         Verification.verifyStrings(webDriver.getTitle(), getData("HomePageTitle"));
     }
 
-
     @Step("add User To Grafana")
     public static void addUserTOGrafana(String name,String email,String userName, String password){
         grafanaUIActions.click(loginPage.getBtn_users());

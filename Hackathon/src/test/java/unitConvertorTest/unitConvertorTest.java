@@ -6,17 +6,17 @@ import workFlows.MobileFlows;
 
 public class unitConvertorTest extends CommonOps {
     @Test
-    public void basicWeightSection(){
+    public void Test1basicWeightSection(){
         MobileFlows.basicWeightSection();
     }
 
     @Test
-    public void livingTempSection(){
+    public void Test2livingTempSection(){
         MobileFlows.livingTempSection();
     }
 
     @Test
-    public void LivingCurrencySection(){
+    public void Test3LivingCurrencySection(){
         MobileFlows.LivingCurrencySection();
     }
 }

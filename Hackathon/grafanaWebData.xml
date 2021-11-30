@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Env>
+    <PlatfromName>Web</PlatfromName>
     <WebPlatform>Chrome</WebPlatform>
     <UserName>admin</UserName>
     <Password>admin</Password>
@@ -12,4 +13,8 @@
     <NewPassword>123456789</NewPassword>
     <xmlFileName>grafanaWebData</xmlFileName>
     <URLDashb>http://localhost:3000/?orgId=1</URLDashb>
+    <ResultAdd>18</ResultAdd>
+    <ResultSub>8</ResultSub>
+    <ResultDiv>4.5</ResultDiv>
+    <ResultMul>45</ResultMul>
 </Env>
