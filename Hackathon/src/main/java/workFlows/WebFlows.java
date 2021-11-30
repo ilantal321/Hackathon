@@ -3,6 +3,7 @@ package workFlows;
 import Utillties.CommonOps;
 import Utillties.ManageDDT;
 import Utillties.Verification;
+import extensions.DBActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
@@ -47,6 +48,13 @@ public class WebFlows extends CommonOps {
         grafanaUIActions.sendKeys(dashboardPage.getTxt_dashboardName(), "test_dashboard");
         grafanaUIActions.click(dashboardPage.getBtn_finallySave());
         Verification.verifyNotEqual(String.valueOf(dashboardPage.getDashboards_size().size()),"0");
+    }
 
+    @Step
+    public static void assertAll() throws InterruptedException {
+        for (int i = 0; i< DBActions.getSizeList(); i++){
+            Verification.verifyBigSoftAssert(Integer.parseInt(DBActions.getCredentials(i)),Integer.parseInt(CommonOps.getData("Balance")));
+        }
+        softAssert.assertAll();
     }
 }

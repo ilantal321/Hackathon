@@ -7,6 +7,7 @@ import pageObjects.gafana.DashboardPage;
 import pageObjects.gafana.LoginPage;
 import pageObjects.gafana.MenuComponent;
 import pageObjects.gafana.PluginsPage;
+import pageObjects.toDoList.ToDoListPage;
 import pageObjects.unitConverter.basicWeightSection;
 import pageObjects.unitConverter.livingCurrencySection;
 import pageObjects.unitConverter.livingTempSection;
@@ -48,8 +49,10 @@ public class ManagerPages extends CommonOps{
     public static void appiumLivingCurrencySection(){
         livingCurrencySection =new livingCurrencySection(Androiddriver);
     }
-
-
     @Step("Make calculator Page")
     public static void makeCalculatorPage(){ calculatorPage = PageFactory.initElements(windowsDriver, CalculatorPage.class);}
+    @Step("Make ToDoList Page")
+    public static void makeToDoListPage() {
+        toDoListPage= PageFactory.initElements(webDriver, ToDoListPage.class);
+    }
 }

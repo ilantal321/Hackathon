@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static Utillties.Base.softAssert;
 import static org.testng.Assert.*;
 public class Verification {
     @Step("verify strings")
@@ -29,5 +30,9 @@ public class Verification {
     @Step("verify int")
     public static void verifyInt(int actual, int expected) {
         assertEquals(actual, expected);
+    }
+    @Step("verify what big")
+    public static void verifyBigSoftAssert(int actual, int expected){
+        softAssert.assertTrue(actual>expected);
     }
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -41,18 +42,22 @@ public class CommonOps extends Base {
 
     @Parameters({ "PlatformName" ,"Driver"})
     @BeforeClass
-    public void startSession(String platformName ,String driver) throws java.net.MalformedURLException{
+    public void startSession(String platformName ,String driver) throws java.net.MalformedURLException, InterruptedException {
         if (platformName.equals("Desktop")) {
             initWindowsDriver();
         }
         else if (platformName.equals("web") ) {
             initWebDriver(driver);
+            initDataBase();
         }
         else if((platformName.equals("Appium"))){
             initAndroidDriver();
         }
         else if((platformName.equals("API"))){
             initAPI();
+        }
+        else if((platformName.equals("Electron"))){
+            initElectronDriver();
         }
     }
     @Step("API Driver")
@@ -189,5 +194,28 @@ public void checkPlugins() throws FindFailed {
         }
         doc.getDocumentElement().normalize();
         return doc.getElementsByTagName(nodeName).item(0).getTextContent();
+    }
+
+
+    @Step
+    public static void initElectronDriver() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver","C:\\Automation\\electrondriver-v3.1.2-win32-x64\\electrondriver.exe");
+        opt = new ChromeOptions();
+        //opt.setBinary("C:\\Automation\\TodoList-Setup.exe");
+        opt.setBinary("C:\\Users\\User\\AppData\\Local\\Programs\\todolist\\Todolist.exe");
+        electronDc = new DesiredCapabilities();
+        electronDc.setCapability("chromeOptions", opt);
+        electronDc.setBrowserName("chrome");
+        webDriver = new ChromeDriver(electronDc);
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        actions=new Actions(webDriver);
+        ManagerPages.makeToDoListPage();
+    }
+
+    @Step
+    public void initDataBase(){
+        jdbc=new JDBC();
+        jdbc.initSQLConnection();
+        softAssert=new SoftAssert();
     }
 }
