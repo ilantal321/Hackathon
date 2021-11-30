@@ -4,11 +4,14 @@ import extensions.UIActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.windows.WindowsDriver;
+import io.restassured.path.json.JsonPath;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Wait;
 import org.sikuli.script.Screen;
+import org.testng.asserts.SoftAssert;
 import pageObjects.calculator.CalculatorPage;
 import pageObjects.gafana.DashboardPage;
 import pageObjects.gafana.LoginPage;
@@ -17,7 +20,8 @@ import pageObjects.gafana.PluginsPage;
 import pageObjects.unitConverter.basicWeightSection;
 import pageObjects.unitConverter.livingCurrencySection;
 import pageObjects.unitConverter.livingTempSection;
-
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 public class Base<reportDirectory, reportFormat, testName> {
     protected static WebDriver webDriver;
     protected static LoginPage loginPage;
@@ -46,4 +50,11 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static final String calcApp = "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App";
     protected static CalculatorPage calculatorPage;
 
+
+    protected static SoftAssert softAssert;
+    //rest assured
+    protected static RequestSpecification httpRequest;
+    protected static Response response;
+    protected static JSONObject param;
+    protected static JsonPath jsonPath;
 }

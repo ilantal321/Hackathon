@@ -17,15 +17,12 @@ public class MobileFlows extends CommonOps {
         MobileUIActions.click(basicWeightSection.weight_lb);
         Assert.assertEquals(basicWeightSection.weight_ozResult.getText(),getData("OZResult"));
     }
-
     @Step
     public static void livingTempSection(){
         MobileUIActions.click(livingTempSection.living_section);
         MobileUIActions.click(livingTempSection.living_tempTab);
         Assert.assertEquals(livingTempSection.living_cTemp.getText(),getData("TempResult"));
     }
-
-
     @Step
     public static void LivingCurrencySection(){
         MobileUIActions.click(livingCurrencySection.getLivingC_currency());

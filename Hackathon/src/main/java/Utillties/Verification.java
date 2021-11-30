@@ -26,5 +26,8 @@ public class Verification {
     public static void verifyNotEqual(String actual, String expected) {
         assertNotEquals(actual, expected);
     }
-
+    @Step("verify int")
+    public static void verifyInt(int actual, int expected) {
+        assertEquals(actual, expected);
+    }
 }

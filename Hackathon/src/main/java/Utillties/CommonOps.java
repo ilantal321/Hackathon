@@ -7,6 +7,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
@@ -23,6 +24,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
 import pageObjects.calculator.CalculatorPage;
 
@@ -31,6 +33,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -48,8 +51,17 @@ public class CommonOps extends Base {
         else if((platformName.equals("Appium"))){
             initAndroidDriver();
         }
+        else if((platformName.equals("API"))){
+            initAPI();
+        }
     }
-
+    @Step("API Driver")
+    public void initAPI()
+    {
+        RestAssured.baseURI=getData("URL");
+        httpRequest = RestAssured.given().auth().preemptive().basic(getData("UserName"), getData("Password"));
+        httpRequest.header("Content-Type","application/json");
+    }
 
     @Step("Open web driver")
     public void initWebDriver(String driver) throws MalformedURLException {
@@ -138,6 +150,19 @@ public void checkPlugins() throws FindFailed {
         }if (platformName.equals("Appium")) {
             Androiddriver.close();
         }
+    }
+    @Step
+    public static void checkIfAllUsersHaveID()
+    {
+        response=httpRequest.get("/api/users");
+        jsonPath=response.jsonPath();
+        response.getBody().prettyPrint();
+        Verification.verifyInt(response.getStatusCode(),200);
+        softAssert=new SoftAssert();
+        List<Integer> usersIsAdmin=jsonPath.getList("id");
+        for (int id:usersIsAdmin)
+            softAssert.assertTrue(id>0);
+        softAssert.assertAll();
     }
 
         @Attachment(value = "Page Screen-Shot", type = "image/png")

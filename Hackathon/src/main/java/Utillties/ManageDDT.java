@@ -17,11 +17,7 @@ import java.util.List;
 
 public class ManageDDT {
 
-    @DataProvider(name = "data-provider")
-    @Description("DataProvider: Get Object 'table' from CSV file")
-    public static Object[][] getDataObject(){
-        return getDataFromCSV("./Config/DataProv.csv");
-    }
+
 
     @Description("Convert CSV into Object 'table'")
     public static Object[][] getDataFromCSV(String filePath){
@@ -39,7 +35,7 @@ public class ManageDDT {
     @Description("Read CSV from file path")
     public static List<List<String>> readCSV(String filePath) {
         List<List<String>> records = new ArrayList<>();
-        try (CSVReader csvReader = new CSVReader(new FileReader("./Config/DataProv.csv"))) {
+        try (CSVReader csvReader = new CSVReader(new FileReader(filePath))) {
             String[] values;
             while ((values = csvReader.readNext()) != null) {
                 records.add(Arrays.asList(values));
@@ -49,6 +45,15 @@ public class ManageDDT {
         }
         return records;
     }
-
+    @DataProvider(name = "data-providerApiUsers")
+    @Description("DataProvider: Get Object 'table' from CSV file")
+    public static Object[][] getDataObjectUsers(){
+        return getDataFromCSV("D:\\bal\\Hackathon\\Hackathon\\apiUsersValuesCSV.csv");
+    }
+    @DataProvider(name = "data-providerApiFolders")
+    @Description("DataProvider: Get Object 'table' from CSV file")
+    public static Object[][] getDataObjectFolders() {
+        return getDataFromCSV("D:\\bal\\Hackathon\\Hackathon\\apiFoldersValuesCSV.csv");
+    }
 }
 
