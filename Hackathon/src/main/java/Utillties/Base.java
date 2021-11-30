@@ -31,7 +31,7 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static UIActions grafanaUIActions;
     protected static Actions actions;
     protected static Screen screen;
-    protected static final String pathOfMySqlPic="C:\\Automation\\Hackathon\\Hackathon\\mySql.PNG";
+    protected static final String pathOfMySqlPic="D:\\bal\\Hackathon\\Hackathon\\SikuliPictures\\mySql.PNG";
     protected static DashboardPage dashboardPage;
 
 

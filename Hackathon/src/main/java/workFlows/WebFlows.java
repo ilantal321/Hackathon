@@ -29,6 +29,7 @@ public class WebFlows extends CommonOps {
     }
     @Step("delete new user in Grafana")
     public static void deleteUserInGrafana(){
+        grafanaUIActions.click(loginPage.getBtn_users());
         grafanaUIActions.click(loginPage.getLabel_NewUserInTable().get(0));
         grafanaUIActions.click(loginPage.getBtn_deleteUser());
         grafanaUIActions.click(loginPage.getBtn_deleteUserMassage());

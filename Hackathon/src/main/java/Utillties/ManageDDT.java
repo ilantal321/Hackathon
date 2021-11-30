@@ -48,12 +48,12 @@ public class ManageDDT {
     @DataProvider(name = "data-providerApiUsers")
     @Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectUsers(){
-        return getDataFromCSV("D:\\bal\\Hackathon\\Hackathon\\apiUsersValuesCSV.csv");
+        return getDataFromCSV("./CSVFiles/apiUsersValuesCSV.csv");
     }
     @DataProvider(name = "data-providerApiFolders")
     @Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectFolders() {
-        return getDataFromCSV("D:\\bal\\Hackathon\\Hackathon\\apiFoldersValuesCSV.csv");
+        return getDataFromCSV("./CSVFiles/apiFoldersValuesCSV.csv");
     }
 }
 

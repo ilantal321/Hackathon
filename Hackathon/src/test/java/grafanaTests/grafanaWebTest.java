@@ -1,6 +1,7 @@
 package grafanaTests;
 
 import Utillties.CommonOps;
+import org.sikuli.script.FindFailed;
 import org.testng.annotations.Test;
 import workFlows.WebFlows;
 
@@ -8,17 +9,17 @@ public class grafanaWebTest extends CommonOps {
 
 
     @Test
-    public void Test01_loginToGrafana() {
+    public void test01_loginToGrafana() {
         WebFlows.loginToGrafana(getData("UserName"), getData("Password"));
     }
 
     @Test
-    public void Test02_addNewUser() {
+    public void test02_addNewUser() {
         WebFlows.addUserTOGrafana(getData("NewName"),getData("NewEmail"),getData("NewUserName"),getData("NewPassword"));
     }
 
     @Test
-    public void Test03_deleteNewUser() {
+    public void test03_deleteNewUser() {
         WebFlows.deleteUserInGrafana();
     }
 
@@ -26,10 +27,9 @@ public class grafanaWebTest extends CommonOps {
     public void test04_addNewDashboard() throws InterruptedException {
         WebFlows.dashBoardCreateAndVerify();
     }
-    /*
+
    @Test
     public void test05_checkPlugins() throws FindFailed {
         checkPlugins();
-
-    }*/
+    }
 }
