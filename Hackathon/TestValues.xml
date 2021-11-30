@@ -17,4 +17,8 @@
     <ResultSub>8</ResultSub>
     <ResultDiv>4.5</ResultDiv>
     <ResultMul>45</ResultMul>
+
+    <OZResult>192</OZResult>
+    <TempResult>-1.111111</TempResult>
+    <CurrencyResult>ILS</CurrencyResult>
 </Env>

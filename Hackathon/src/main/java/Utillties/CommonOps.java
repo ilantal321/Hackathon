@@ -105,7 +105,6 @@ public class CommonOps extends Base {
         ManagerPages.appiumLivingCurrencySection();
 
     }
-
     @Parameters({ "PlatformName" })
     @BeforeMethod
     public void Clear(String platformName) {
@@ -149,7 +148,7 @@ public void checkPlugins() throws FindFailed {
     public static String getData (String nodeName) {
         DocumentBuilder dBuilder;
         Document doc = null;
-        File fXmlFile = new File("./grafanaWebData.xml");
+        File fXmlFile = new File("./TestValues.xml");
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         try {
             dBuilder = dbFactory.newDocumentBuilder();

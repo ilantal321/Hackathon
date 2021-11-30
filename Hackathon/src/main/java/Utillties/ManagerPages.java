@@ -49,7 +49,7 @@ public class ManagerPages extends CommonOps{
         livingCurrencySection =new livingCurrencySection(Androiddriver);
     }
 
+
     @Step("Make calculator Page")
     public static void makeCalculatorPage(){ calculatorPage = PageFactory.initElements(windowsDriver, CalculatorPage.class);}
-
 }
