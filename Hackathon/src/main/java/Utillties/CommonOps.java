@@ -1,6 +1,8 @@
 package Utillties;
 
 import extensions.UIActions;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -20,41 +22,63 @@ import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public class CommonOps extends Base {
 
     @BeforeClass
-    public void startSession() {
+    public void startSession() throws MalformedURLException {
+
+//
+//
+//        if (getData("WebPlatform").equals("Chrome")) {
+//            WebDriverManager.chromedriver().setup();
+//            webDriver = new ChromeDriver();
+//        }
+//        else if (getData("WebPlatform").equals("FireFox")) {
+//            WebDriverManager.firefoxdriver().setup();
+//            webDriver = new FirefoxDriver();
+//        }
+//        else if (getData("WebPlatform").equals("Edge")) {
+//            WebDriverManager.edgedriver().setup();
+//            webDriver = new EdgeDriver();
+//        }
+//        webDriver.manage().window().maximize();
+//        webDriver.get(getData("URL"));
+//        ManagerPages.makePOLoginPage();
+//        ManagerPages.makePOMenuPage();
+//        ManagerPages.makePOPluginsPage();
+//        ManagerPages.makeDashboardPage();
+//        screen=new Screen();
+//        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//        grafanaUIActions = new UIActions();
+
+//        //dashboard
+//        ManagerPages.makeDashboardPage();
+//        grafanaUIActions=new UIActions();
+//        actions=new Actions(webDriver);
+
+
+        //appium
+
+        dc.setCapability("reportDirectory", reportDirectory);
+        dc.setCapability("reportFormat", reportFormat);
+        dc.setCapability("testName", testName);
+        dc.setCapability(MobileCapabilityType.UDID, "d030a260");
+        driver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
+        driver.setLogLevel(Level.INFO);
+        ManagerPages.makeAppium();
+        ManagerPages.AppiumLivingSection();
+        ManagerPages.appiumLivingCurrencySection();
 
 
 
-        if (getData("WebPlatform").equals("Chrome")) {
-            WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver();
-        }
-        else if (getData("WebPlatform").equals("FireFox")) {
-            WebDriverManager.firefoxdriver().setup();
-            webDriver = new FirefoxDriver();
-        }
-        else if (getData("WebPlatform").equals("Edge")) {
-            WebDriverManager.edgedriver().setup();
-            webDriver = new EdgeDriver();
-        }
-        webDriver.manage().window().maximize();
-        webDriver.get(getData("URL"));
-        ManagerPages.makePOLoginPage();
-        ManagerPages.makePOMenuPage();
-        ManagerPages.makePOPluginsPage();
-        ManagerPages.makeDashboardPage();
-        screen=new Screen();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        grafanaUIActions = new UIActions();
 
-        //dashboard
-        ManagerPages.makeDashboardPage();
-        grafanaUIActions=new UIActions();
-        actions=new Actions(webDriver);
+
+
     }
 @Step("check if plugin mySql found when search it")
 public void checkPlugins() throws FindFailed {
@@ -71,11 +95,11 @@ public void checkPlugins() throws FindFailed {
 
 
 }
-    @AfterClass
-    public void closeSession(){
-        webDriver.close();
-
-    }
+//    @AfterClass
+//    public void closeSession(){
+//        webDriver.close();
+//
+//    }
 
         @Attachment(value = "Page Screen-Shot", type = "image/png")
         public static byte[] saveScreenshot () {

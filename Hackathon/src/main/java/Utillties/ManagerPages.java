@@ -6,6 +6,9 @@ import pageObjects.gafana.DashboardPage;
 import pageObjects.gafana.LoginPage;
 import pageObjects.gafana.MenuComponent;
 import pageObjects.gafana.PluginsPage;
+import pageObjects.unitConverter.basicWeightSection;
+import pageObjects.unitConverter.livingCurrencySection;
+import pageObjects.unitConverter.livingTempSection;
 
 public class ManagerPages extends CommonOps{
     @Step("make PO LoginPage")
@@ -28,6 +31,21 @@ public class ManagerPages extends CommonOps{
     public static void makeDashboardPage()
     {
         dashboardPage= PageFactory.initElements(webDriver, DashboardPage.class);
+    }
+
+    @Step("appium")
+    public static void makeAppium(){
+        basicWeightSection =new basicWeightSection(driver);
+    }
+
+    @Step("appium")
+    public static void AppiumLivingSection(){
+        livingTempSection =new livingTempSection(driver);
+    }
+
+    @Step("appiumLivingCurrencySection")
+    public static void appiumLivingCurrencySection(){
+        livingCurrencySection =new livingCurrencySection(driver);
     }
 
 }
