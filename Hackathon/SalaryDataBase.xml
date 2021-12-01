@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="DataBase Suite" parallel="false">
+    <listeners>
+        <listener class-name="Utillties.Listeners"></listener>
+    </listeners>
+    <test name="Salaries">
+        <parameter name="PlatformName" value="Database"></parameter>
+        <parameter name="Driver" value=""></parameter>
+        <classes>
+            <class name="Databasetests.DatabaseTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

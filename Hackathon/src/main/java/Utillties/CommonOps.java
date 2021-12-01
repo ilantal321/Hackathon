@@ -14,6 +14,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -42,7 +43,7 @@ public class CommonOps extends Base {
 
     @Parameters({ "PlatformName" ,"Driver"})
     @BeforeClass
-    public void startSession(String platformName ,String driver) throws java.net.MalformedURLException{
+    public void startSession(String platformName ,String driver) throws java.net.MalformedURLException, InterruptedException {
         if (platformName.equals("Desktop")) {
             initWindowsDriver();
         }
@@ -55,6 +56,13 @@ public class CommonOps extends Base {
         else if((platformName.equals("API"))){
             initAPI();
         }
+        else if((platformName.equals("Electron"))){
+            initElectronDriver();
+        }
+        else if((platformName.equals("Database"))){
+            initDataBase();
+        }
+
     }
     @Step("API Driver")
     public void initAPI()
@@ -124,19 +132,24 @@ public class CommonOps extends Base {
         if (platformName.equals("Desktop")) {
             windowsDriver.findElement(By.xpath("//*[@AutomationId='clearButton']")).click();
         }
+        else if (platformName.equals("web") ) {
+            //webDriver.get(getData("URL"));
+        }
     }
 
 @Step("check if plugin mySql found when search it")
 public void checkPlugins() throws FindFailed {
+    webDriver.get(getData("URL"));
     actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
     grafanaUIActions.sendKeys(pluginsPage.getInput_searchPlugins(),"mySql");
+    actions.moveToElement(pluginsPage.getInput_searchPlugins()).build().perform();
     try {
         Thread.sleep(5000);
     } catch (InterruptedException e) {
         e.printStackTrace();
     }
     pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
-    screen.click(pathOfMySqlPic,70);
+    screen.click(pathOfMySqlPic,85);
     Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
 }
 
@@ -152,7 +165,7 @@ public void checkPlugins() throws FindFailed {
             Androiddriver.close();
         }
     }
-    @Step
+    @Step("check all user have ID")
     public static void checkIfAllUsersHaveID()
     {
         ApiActions.makeGetRequest("/api/users");
@@ -166,7 +179,7 @@ public void checkPlugins() throws FindFailed {
         softAssert.assertAll();
     }
 
-        @Attachment(value = "Page Screen-Shot", type = "image/png")
+        @Attachment(value = "Page screenshot", type = "image/png")
         public static byte[] saveScreenshot () {
             return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
         }
@@ -185,5 +198,29 @@ public void checkPlugins() throws FindFailed {
         }
         doc.getDocumentElement().normalize();
         return doc.getElementsByTagName(nodeName).item(0).getTextContent();
+    }
+
+
+    @Step
+    public static void initElectronDriver() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver","C:\\Automation\\electrondriver-v3.1.2-win32-x64\\electrondriver.exe");
+        opt = new ChromeOptions();
+        //opt.setBinary("C:\\Automation\\TodoList-Setup.exe");
+        opt.setBinary("C:\\Users\\User\\AppData\\Local\\Programs\\todolist\\Todolist.exe");
+        electronDc = new DesiredCapabilities();
+        electronDc.setCapability("chromeOptions", opt);
+        electronDc.setBrowserName("chrome");
+        webDriver = new ChromeDriver(electronDc);
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        actions=new Actions(webDriver);
+        ManagerPages.makeToDoListPage();
+        grafanaUIActions=new UIActions();
+    }
+
+    @Step
+    public void initDataBase(){
+        jdbc=new JDBC();
+        jdbc.initSQLConnection();
+        softAssert=new SoftAssert();
     }
 }

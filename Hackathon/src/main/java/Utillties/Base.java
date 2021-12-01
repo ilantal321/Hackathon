@@ -7,6 +7,7 @@ import io.appium.java_client.windows.WindowsDriver;
 import io.restassured.path.json.JsonPath;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Wait;
@@ -17,6 +18,7 @@ import pageObjects.gafana.DashboardPage;
 import pageObjects.gafana.LoginPage;
 import pageObjects.gafana.MenuComponent;
 import pageObjects.gafana.PluginsPage;
+import pageObjects.toDoList.ToDoListPage;
 import pageObjects.unitConverter.basicWeightSection;
 import pageObjects.unitConverter.livingCurrencySection;
 import pageObjects.unitConverter.livingTempSection;
@@ -31,7 +33,10 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static UIActions grafanaUIActions;
     protected static Actions actions;
     protected static Screen screen;
-    protected static final String pathOfMySqlPic="C:\\Automation\\Hackathon\\Hackathon\\mySql.PNG";
+    /*
+    absolute path relative won't work
+     */
+    protected static String pathOfMySqlPic="D:\\bal\\Hackathon\\Hackathon\\SikuliPictures\\mySql.PNG";
     protected static DashboardPage dashboardPage;
 
 
@@ -57,4 +62,10 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static Response response;
     protected static JSONObject param;
     protected static JsonPath jsonPath;
+
+    //Electron
+    protected static ChromeOptions opt;
+    protected static DesiredCapabilities electronDc;
+    protected static ToDoListPage toDoListPage;
+    protected static JDBC jdbc;
 }

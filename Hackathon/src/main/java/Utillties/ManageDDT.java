@@ -16,9 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ManageDDT {
-
-
-
     @Description("Convert CSV into Object 'table'")
     public static Object[][] getDataFromCSV(String filePath){
         List<List<String>> csvData = readCSV(filePath);
@@ -48,12 +45,14 @@ public class ManageDDT {
     @DataProvider(name = "data-providerApiUsers")
     @Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectUsers(){
-        return getDataFromCSV("C:\\Hackathon\\Hackathon\\apiUsersValuesCSV.csv");
+        return getDataFromCSV("./CSVFiles/apiUsersValuesCSV.csv");
+
     }
     @DataProvider(name = "data-providerApiFolders")
     @Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectFolders() {
-        return getDataFromCSV("C:\\Hackathon\\Hackathon\\apiFoldersValuesCSV.csv");
+        return getDataFromCSV("./CSVFiles/apiFoldersValuesCSV.csv");
+
     }
 }
 

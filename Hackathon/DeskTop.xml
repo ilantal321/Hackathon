@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite" parallel="false">
-    <test name="Test">
+<suite name="Desktop suite" parallel="false">
+    <listeners>
+        <listener class-name="Utillties.Listeners"></listener>
+    </listeners>
+    <test name="Calculator">
         <parameter name="PlatformName" value="Desktop"></parameter>
         <parameter name="Driver" value=""></parameter>
         <classes>
