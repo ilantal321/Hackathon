@@ -1,5 +1,6 @@
 package Utillties;
 
+import extensions.ApiActions;
 import extensions.UIActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -138,7 +139,7 @@ public class CommonOps extends Base {
 
 @Step("check if plugin mySql found when search it")
 public void checkPlugins() throws FindFailed {
-        webDriver.get(getData("URL"));
+    webDriver.get(getData("URL"));
     actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
     grafanaUIActions.sendKeys(pluginsPage.getInput_searchPlugins(),"mySql");
     actions.moveToElement(pluginsPage.getInput_searchPlugins()).build().perform();
@@ -148,7 +149,7 @@ public void checkPlugins() throws FindFailed {
         e.printStackTrace();
     }
     pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
-    screen.click(pathOfMySqlPic,50);
+    screen.click(pathOfMySqlPic,85);
     Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
 }
 
@@ -164,10 +165,10 @@ public void checkPlugins() throws FindFailed {
             Androiddriver.close();
         }
     }
-    @Step
+    @Step("check all user have ID")
     public static void checkIfAllUsersHaveID()
     {
-        response=httpRequest.get("/api/users");
+        ApiActions.makeGetRequest("/api/users");
         jsonPath=response.jsonPath();
         response.getBody().prettyPrint();
         Verification.verifyInt(response.getStatusCode(),200);
@@ -213,6 +214,7 @@ public void checkPlugins() throws FindFailed {
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         actions=new Actions(webDriver);
         ManagerPages.makeToDoListPage();
+        grafanaUIActions=new UIActions();
     }
 
     @Step

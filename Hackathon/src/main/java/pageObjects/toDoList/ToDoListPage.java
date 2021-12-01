@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class ToDoListPage {
     @FindBy(xpath = "//input[@placeholder=\"Create a task\"]")
     private WebElement txt_newTask;
@@ -16,7 +18,11 @@ public class ToDoListPage {
 
     @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div[1]/div/div/*[name()=\"svg\"]")
     private WebElement delete;
+    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div")
+    private List<WebElement> listTasks;
 
+    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div/div/div/div/label")
+    private List<WebElement> listNameTasks;
     @Step
     public WebElement getTxtNewTask(){
         return txt_newTask;
@@ -35,5 +41,15 @@ public class ToDoListPage {
     @Step
     public WebElement getDelete(){
         return delete;
+    }
+
+    @Step
+    public List<WebElement> getListTasks(){
+        return listTasks;
+    }
+
+    @Step
+    public List<WebElement> getListNameTasks(){
+        return listNameTasks;
     }
 }

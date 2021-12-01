@@ -35,4 +35,8 @@ public class Verification {
     public static void verifyBigSoftAssert(int actual, int expected){
         softAssert.assertTrue(actual>expected);
     }
+    @Step("verify contain")
+    public static void verifyContain(String name, String con){
+        assertTrue(name.contains(con));
+    }
 }

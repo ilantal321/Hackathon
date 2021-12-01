@@ -34,9 +34,5 @@ public class grafanaWebTest extends CommonOps {
     public void test05_checkPlugins() throws FindFailed {
         checkPlugins();
     }
-    @Test
-    public void test06_databaseCheckAllData() throws InterruptedException {
-        WebFlows.assertAll();
-    }
 
 }
