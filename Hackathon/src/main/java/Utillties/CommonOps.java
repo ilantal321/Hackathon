@@ -48,7 +48,6 @@ public class CommonOps extends Base {
         }
         else if (platformName.equals("web") ) {
             initWebDriver(driver);
-            initDataBase();
         }
         else if((platformName.equals("Appium"))){
             initAndroidDriver();
@@ -59,6 +58,10 @@ public class CommonOps extends Base {
         else if((platformName.equals("Electron"))){
             initElectronDriver();
         }
+        else if((platformName.equals("Database"))){
+            initDataBase();
+        }
+
     }
     @Step("API Driver")
     public void initAPI()
