@@ -5,6 +5,8 @@ import org.sikuli.script.FindFailed;
 import org.testng.annotations.Test;
 import workFlows.WebFlows;
 
+import static org.testng.AssertJUnit.fail;
+
 public class grafanaWebTest extends CommonOps {
 
 

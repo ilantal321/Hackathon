@@ -175,7 +175,7 @@ public void checkPlugins() throws FindFailed {
         softAssert.assertAll();
     }
 
-        @Attachment(value = "Page Screen-Shot", type = "image/png")
+        @Attachment(value = "Page screenshot", type = "image/png")
         public static byte[] saveScreenshot () {
             return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
         }
