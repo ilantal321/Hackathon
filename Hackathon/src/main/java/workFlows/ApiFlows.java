@@ -2,6 +2,7 @@ package workFlows;
 import Utillties.Base;
 import Utillties.CommonOps;
 import Utillties.Verification;
+import extensions.ApiActions;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
@@ -13,7 +14,7 @@ import java.util.List;
         public static void postUser(String name, String email,String login,String password)
         {
             addToBodyOfRequest(new Object[][]{{"name",name},{"email",email},{"login",login},{"password",password}});
-            response=httpRequest.post("/api/admin/users");
+            ApiActions.makePostRequest("/api/admin/users");
             response.getBody().prettyPrint();
             Assert.assertEquals(response.getStatusCode(),200);
         }
@@ -21,7 +22,7 @@ import java.util.List;
         public static void postFolder(String uid, String title)
         {
             addToBodyOfRequest(new Object[][]{{"uid",uid},{"title",title}});
-            response=httpRequest.post("/api/folders");
+            ApiActions.makePostRequest("/api/folders");
             response.getBody().prettyPrint();
             Verification.verifyInt(response.getStatusCode(),200);
         }
@@ -29,7 +30,7 @@ import java.util.List;
         public static void changePassword(String oldPassword,String newPassword)
         {
             addToBodyOfRequest(new Object[][]{{"oldPassword",oldPassword},{"newPassword",newPassword}});
-            response=httpRequest.put("/api/user/password");
+            ApiActions.makePutRequest("/api/user/password");
             response.getBody().prettyPrint();
             Verification.verifyInt(response.getStatusCode(),200);
         }
@@ -45,7 +46,7 @@ import java.util.List;
         @Step("add folder To Body Of Request")
         public static void DeleteFolder(String uid)
         {
-            response=httpRequest.delete("/api/folders/"+uid);
+            ApiActions.makeDeleteRequest("/api/folders/"+uid);
             response.getBody().prettyPrint();
             Verification.verifyInt(response.getStatusCode(),200);
         }

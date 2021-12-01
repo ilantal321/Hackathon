@@ -1,5 +1,6 @@
 package Utillties;
 
+import extensions.ApiActions;
 import extensions.UIActions;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -154,7 +155,7 @@ public void checkPlugins() throws FindFailed {
     @Step
     public static void checkIfAllUsersHaveID()
     {
-        response=httpRequest.get("/api/users");
+        ApiActions.makeGetRequest("/api/users");
         jsonPath=response.jsonPath();
         response.getBody().prettyPrint();
         Verification.verifyInt(response.getStatusCode(),200);
