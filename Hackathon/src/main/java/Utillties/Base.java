@@ -40,6 +40,7 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static DashboardPage dashboardPage;
 
 
+
     //appium
     protected static basicWeightSection basicWeightSection;
     protected static livingTempSection livingTempSection;
@@ -68,4 +69,6 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static DesiredCapabilities electronDc;
     protected static ToDoListPage toDoListPage;
     protected static JDBC jdbc;
+
+    protected static String platformNameForSC;
 }

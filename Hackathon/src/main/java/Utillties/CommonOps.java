@@ -44,6 +44,7 @@ public class CommonOps extends Base {
     @Parameters({ "PlatformName" ,"Driver"})
     @BeforeClass
     public void startSession(String platformName ,String driver) throws java.net.MalformedURLException, InterruptedException {
+        platformNameForSC=platformName;
         if (platformName.equals("Desktop")) {
             initWindowsDriver();
         }
@@ -159,9 +160,10 @@ public void checkPlugins() throws FindFailed {
         if (platformName.equals("Desktop")) {
             windowsDriver.close();
         }
-        if (platformName.equals("web")) {
+        else if (platformName.equals("web") || platformName.equals("Electron")) {
             webDriver.close();
-        }if (platformName.equals("Appium")) {
+        }
+        else if (platformName.equals("Appium")) {
             Androiddriver.close();
         }
     }
@@ -181,6 +183,11 @@ public void checkPlugins() throws FindFailed {
 
         @Attachment(value = "Page screenshot", type = "image/png")
         public static byte[] saveScreenshot () {
+            if (Base.pathOfMySqlPic.equals("Desktop")) {
+                return ((TakesScreenshot) windowsDriver).getScreenshotAs(OutputType.BYTES);
+            } else if (Base.pathOfMySqlPic.equals("Appium")) {
+                return ((TakesScreenshot) Androiddriver).getScreenshotAs(OutputType.BYTES);
+            }
             return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
         }
 
@@ -223,4 +230,5 @@ public void checkPlugins() throws FindFailed {
         jdbc.initSQLConnection();
         softAssert=new SoftAssert();
     }
+
 }
