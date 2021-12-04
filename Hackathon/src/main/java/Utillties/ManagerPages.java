@@ -37,17 +37,17 @@ public class ManagerPages extends CommonOps{
 
     @Step("appium")
     public static void makeAppium(){
-        basicWeightSection =new basicWeightSection(Androiddriver);
+        basicWeightSection =new basicWeightSection(AndroidDriver);
     }
 
     @Step("appium")
     public static void AppiumLivingSection(){
-        livingTempSection =new livingTempSection(Androiddriver);
+        livingTempSection =new livingTempSection(AndroidDriver);
     }
 
     @Step("appiumLivingCurrencySection")
     public static void appiumLivingCurrencySection(){
-        livingCurrencySection =new livingCurrencySection(Androiddriver);
+        livingCurrencySection =new livingCurrencySection(AndroidDriver);
     }
     @Step("Make calculator Page")
     public static void makeCalculatorPage(){ calculatorPage = PageFactory.initElements(windowsDriver, CalculatorPage.class);}

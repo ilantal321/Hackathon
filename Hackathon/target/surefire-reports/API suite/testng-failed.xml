@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [API suite]">
+  <listeners>
+    <listener class-name="Utillties.Listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Grafana API(failed)">
+    <parameter name="PlatformName" value="API"/>
+    <parameter name="Driver" value=""/>
+    <classes>
+      <class name="grafanaTests.GrafanaApiTest">
+        <methods>
+          <include name="test03_changePassword"/>
+          <include name="test05_addFolders" invocation-numbers="0"/>
+          <include name="test01_addUser" invocation-numbers="0 1"/>
+          <include name="Clear"/>
+          <include name="startSession"/>
+          <include name="closeSession"/>
+          <include name="test06_DeleteFolder"/>
+          <include name="test04_checkIfAllUsersHaveID"/>
+        </methods>
+      </class> <!-- grafanaTests.GrafanaApiTest -->
+    </classes>
+  </test> <!-- Grafana API(failed) -->
+</suite> <!-- Failed suite [API suite] -->

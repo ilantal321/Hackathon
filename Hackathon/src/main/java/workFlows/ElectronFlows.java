@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import pageObjects.toDoList.ToDoListPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,55 +18,64 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.Assert.assertEquals;
 public class ElectronFlows extends CommonOps{
     static List<String> listStringTasks=new ArrayList<>();
-    static int size=0;
 
-    @Step
+    @Step("Initialize a to-do list")
     public static void initListStringTasks(){
         listStringTasks.add("Clean the house");
         listStringTasks.add("Wash the dishes");
         listStringTasks.add("Go shopping");
     }
 
-    @Step
+    @Step("add task")
     public static void addTask(){
         initListStringTasks();
-        Uninterruptibles.sleepUninterruptibly(6, TimeUnit.SECONDS);
+        Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
         grafanaUIActions.click(toDoListPage.getTxtNewTask());
         for(String str:listStringTasks){
             grafanaUIActions.sendKeys(toDoListPage.getTxtNewTask(),str);
             actions.sendKeys(Keys.RETURN).build().perform();
-            size++;
+            sizeOfTasks++;
         }
         Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
         System.out.println(UIActions.getSizeList(toDoListPage.getListTasks()));
-        Verification.verifyInt(size,UIActions.getSizeList(toDoListPage.getListTasks()));
     }
 
-    @Step
-    public static void editName(){
-        String newName=" for kids";
-        String oldName=toDoListPage.getTxtNameTask().getText();
-        UIActions.editInput(toDoListPage.getTxtNameTask(),newName);
+    @Step("update task")
+    public static void editName(int index) {
+        if (!checkSizeOfList(index))
+            {
+                System.out.println("wrong index task to edit");
+                return;
+            }
+        newName=" for kids";
+        oldName=toDoListPage.getTxtNameTask().get(index).getText();
+        UIActions.editInput(toDoListPage.getTxtNameTask().get(index),newName);
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
-        Verification.verifyStrings(toDoListPage.getTxtNameTask().getText(), oldName+newName);
     }
 
-    @Step
+    @Step("Click as completed all and check if all the elements displayed are marked as completed")
     public static void check(){
         grafanaUIActions.click(toDoListPage.getChbCheckAllTasks());
         for(WebElement name:toDoListPage.getListNameTasks()){
             System.out.println(name.getText());
-            Verification.verifyContain(name.getAttribute("class"), "completed");
+            Verification.verifySoftAssertContain(name.getAttribute("class"), "completed");
         }
     }
 
-    @Step
-    public static  void delete(){
-        UIActions.moveToElement(toDoListPage.getTxtNameTask());
-        UIActions.moveToElement(toDoListPage.getDelete());
-        grafanaUIActions.click(toDoListPage.getDelete());
-        size--;
+    @Step("delete task by index")
+    public static  void delete(int index){
+        if (!checkSizeOfList(index))
+        {
+            System.out.println("wrong index task to delete");
+            return;
+        }
+        UIActions.moveToElement(toDoListPage.getDelete().get(index));
+        grafanaUIActions.click(toDoListPage.getDelete().get(index));
+        sizeOfTasks--;
         Uninterruptibles.sleepUninterruptibly(3, TimeUnit.SECONDS);
-        Verification.verifyInt(size,UIActions.getSizeList(toDoListPage.getListTasks()));
     }
+        @Step("Checks if there is a task with the same index ")
+        public static  boolean checkSizeOfList(int index){
+           return toDoListPage.getListTasks().size()>=index;
+        }
 }

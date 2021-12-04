@@ -1,0 +1,19 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 90.468 s <<< FAILURE! - in TestSuite
+test04_addNewDashboard(grafanaTests.grafanaWebTest)  Time elapsed: 7.573 s  <<< FAILURE!
+org.openqa.selenium.ElementClickInterceptedException: 
+element click intercepted: Element <div aria-label="Add new panel">...</div> is not clickable at point (194, 175). Other element would receive the click: <a class="css-1j1rze6" href="/dashboard/new">...</a>
+  (Session info: chrome=96.0.4664.45)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-UT7PC9L', ip: '10.215.130.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Windows\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:53901}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 070d157f6b81cf467b70b613ecbfd571
+	at grafanaTests.grafanaWebTest.test04_addNewDashboard(grafanaWebTest.java:30)
+
+test05_checkPlugins(grafanaTests.grafanaWebTest)  Time elapsed: 14.81 s  <<< FAILURE!
+org.sikuli.script.FindFailed: D:\bal\Hackathon\Hackathon\SikuliPictures\mySql.PNG: (0x0) in R[0,0 1024x768]@S(0)
+	at grafanaTests.grafanaWebTest.test05_checkPlugins(grafanaWebTest.java:35)
+

@@ -9,19 +9,18 @@ import java.util.List;
 public class ToDoListPage {
     @FindBy(xpath = "//input[@placeholder=\"Create a task\"]")
     private WebElement txt_newTask;
+    @FindBy(xpath = "//*[@class='label_5i8SP']")
+    private List<WebElement> txt_nameTask;
 
-    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div[1]/div/div/div/label")
-    private WebElement txt_nameTask;
-
-    @FindBy(xpath = "/html/body/div/div[1]/div[3]/div/div")
+    @FindBy(xpath = "//*[@class='allCompletedIconWrapper_2rCqr']")
     private WebElement chb_checkAllTasks;
 
-    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div[1]/div/div/*[name()=\"svg\"]")
-    private WebElement delete;
-    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div")
+    @FindBy(xpath = "//*[@class='destroy_19w1q']")
+    private List<WebElement> delete;
+    @FindBy(xpath = "//*[@class='taskWrapper_2u8dN']")
     private List<WebElement> listTasks;
 
-    @FindBy(xpath = "/html/body/div/div[1]/div[4]/div[2]/div/div/div/div/div/label")
+    @FindBy(xpath = "//*[@class='textWrapper_X9gil']/label")
     private List<WebElement> listNameTasks;
     @Step
     public WebElement getTxtNewTask(){
@@ -29,7 +28,7 @@ public class ToDoListPage {
     }
 
     @Step
-    public WebElement getTxtNameTask(){
+    public List<WebElement> getTxtNameTask(){
         return txt_nameTask;
     }
 
@@ -39,7 +38,7 @@ public class ToDoListPage {
     }
 
     @Step
-    public WebElement getDelete(){
+    public List<WebElement> getDelete(){
         return delete;
     }
 

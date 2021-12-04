@@ -3,10 +3,13 @@ import Utillties.Base;
 import Utillties.CommonOps;
 import Utillties.Verification;
 import extensions.ApiActions;
+import extensions.UIActions;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+
 import java.awt.*;
 import java.util.List;
     public class ApiFlows extends CommonOps {
@@ -14,25 +17,22 @@ import java.util.List;
         public static void postUser(String name, String email,String login,String password)
         {
             addToBodyOfRequest(new Object[][]{{"name",name},{"email",email},{"login",login},{"password",password}});
-            ApiActions.makePostRequest("/api/admin/users");
+            ApiActions.makePostRequest(getData("pathPost_DeleteUser"));
             response.getBody().prettyPrint();
-            Assert.assertEquals(response.getStatusCode(),200);
         }
         @Step("add folder")
         public static void postFolder(String uid, String title)
         {
             addToBodyOfRequest(new Object[][]{{"uid",uid},{"title",title}});
-            ApiActions.makePostRequest("/api/folders");
+            ApiActions.makePostRequest(getData("pathFolder"));
             response.getBody().prettyPrint();
-            Verification.verifyInt(response.getStatusCode(),200);
         }
         @Step()
         public static void changePassword(String oldPassword,String newPassword)
         {
             addToBodyOfRequest(new Object[][]{{"oldPassword",oldPassword},{"newPassword",newPassword}});
-            ApiActions.makePutRequest("/api/user/password");
+            ApiActions.makePutRequest(getData("pathChangePassword"));
             response.getBody().prettyPrint();
-            Verification.verifyInt(response.getStatusCode(),200);
         }
         @Step("add folder To Body Of Request")
         public static void addToBodyOfRequest(Object[][] parameters)
@@ -43,11 +43,26 @@ import java.util.List;
             }
             httpRequest.body(param.toJSONString());
         }
-        @Step("add folder To Body Of Request")
-        public static void DeleteFolder(String uid)
+        @Step("make delete folder")
+        public static void deleteFolder(String uid)
         {
-            ApiActions.makeDeleteRequest("/api/folders/"+uid);
+            ApiActions.makeDeleteRequest(getData("pathFolder")+uid);
             response.getBody().prettyPrint();
-            Verification.verifyInt(response.getStatusCode(),200);
         }
+        @Step("add folder To Body Of Request")
+        public static void deleteUsers() {
+            ApiActions.makeGetRequest(getData("pathGetAllUsers"));
+            jsonPath = response.jsonPath();
+            allUsersId = jsonPath.getList("id");
+            allUsersLogin = jsonPath.getList("login");
+            for (int i = 0; i < allUsersId.size(); i++) {
+                if (!allUsersLogin.get(i).equals(getData("UserName"))) {//check
+                    ApiActions.makeDeleteRequest(getData("pathPost_DeleteUser") + Integer.toString(allUsersId.get(i)));
+                    response.getBody().prettyPrint();
+                    Verification.verifySoftAssertEquals(response.getStatusCode(), 200);
+                }
+            }
+        }
+
+
 }

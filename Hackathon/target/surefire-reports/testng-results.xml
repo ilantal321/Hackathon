@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="2" ignored="0" total="5" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Web suite" duration-ms="80076" started-at="2021-12-02T13:39:21 IST" finished-at="2021-12-02T13:40:42 IST">
+    <groups>
+    </groups>
+    <test name="Grafana web" duration-ms="80076" started-at="2021-12-02T13:39:21 IST" finished-at="2021-12-02T13:40:42 IST">
+      <class name="grafanaTests.grafanaWebTest">
+        <test-method status="PASS" signature="startSession(java.lang.String, java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="startSession" is-config="true" duration-ms="26519" started-at="2021-12-02T13:39:22 IST" finished-at="2021-12-02T13:39:48 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startSession -->
+        <test-method status="PASS" signature="Clear(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="Clear" is-config="true" duration-ms="1" started-at="2021-12-02T13:39:48 IST" finished-at="2021-12-02T13:39:48 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Clear -->
+        <test-method status="PASS" signature="test01_loginToGrafana()[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="test01_loginToGrafana" duration-ms="7666" started-at="2021-12-02T13:39:49 IST" finished-at="2021-12-02T13:39:57 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test01_loginToGrafana -->
+        <test-method status="PASS" signature="Clear(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="Clear" is-config="true" duration-ms="1" started-at="2021-12-02T13:39:57 IST" finished-at="2021-12-02T13:39:57 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Clear -->
+        <test-method status="PASS" signature="test02_addNewUser()[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="test02_addNewUser" duration-ms="8361" started-at="2021-12-02T13:39:57 IST" finished-at="2021-12-02T13:40:05 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test02_addNewUser -->
+        <test-method status="PASS" signature="Clear(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="Clear" is-config="true" duration-ms="459" started-at="2021-12-02T13:40:05 IST" finished-at="2021-12-02T13:40:06 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Clear -->
+        <test-method status="PASS" signature="test03_deleteNewUser()[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="test03_deleteNewUser" duration-ms="13049" started-at="2021-12-02T13:40:06 IST" finished-at="2021-12-02T13:40:19 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test03_deleteNewUser -->
+        <test-method status="PASS" signature="Clear(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="Clear" is-config="true" duration-ms="0" started-at="2021-12-02T13:40:19 IST" finished-at="2021-12-02T13:40:19 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Clear -->
+        <test-method status="FAIL" signature="test04_addNewDashboard()[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="test04_addNewDashboard" duration-ms="6456" started-at="2021-12-02T13:40:19 IST" finished-at="2021-12-02T13:40:25 IST">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+            <message>
+              <![CDATA[element click intercepted: Element <div aria-label="Add new panel">...</div> is not clickable at point (194, 175). Other element would receive the click: <a class="css-1j1rze6" href="/dashboard/new">...</a>
+  (Session info: chrome=96.0.4664.45)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-UT7PC9L', ip: '10.215.130.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Windows\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:53901}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 070d157f6b81cf467b70b613ecbfd571]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <div aria-label="Add new panel">...</div> is not clickable at point (194, 175). Other element would receive the click: <a class="css-1j1rze6" href="/dashboard/new">...</a>
+  (Session info: chrome=96.0.4664.45)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'DESKTOP-UT7PC9L', ip: '10.215.130.222', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 96.0.4664.45, chrome: {chromedriverVersion: 96.0.4664.45 (76e4c1bb2ab46..., userDataDir: C:\Windows\TEMP\scoped_dir3...}, goog:chromeOptions: {debuggerAddress: localhost:53901}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 070d157f6b81cf467b70b613ecbfd571
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+at com.sun.proxy.$Proxy13.click(Unknown Source)
+at extensions.UIActions.click(UIActions.java:16)
+at workFlows.WebFlows.dashBoardCreateAndVerify(WebFlows.java:44)
+at grafanaTests.grafanaWebTest.test04_addNewDashboard(grafanaWebTest.java:30)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(ArrayList.java:1249)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test04_addNewDashboard -->
+        <test-method status="PASS" signature="Clear(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="Clear" is-config="true" duration-ms="1" started-at="2021-12-02T13:40:27 IST" finished-at="2021-12-02T13:40:27 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Clear -->
+        <test-method status="FAIL" signature="test05_checkPlugins()[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="test05_checkPlugins" duration-ms="14530" started-at="2021-12-02T13:40:27 IST" finished-at="2021-12-02T13:40:41 IST">
+          <exception class="org.sikuli.script.FindFailed">
+            <message>
+              <![CDATA[D:\bal\Hackathon\Hackathon\SikuliPictures\mySql.PNG: (0x0) in R[0,0 1024x768]@S(0)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[FindFailed: D:\bal\Hackathon\Hackathon\SikuliPictures\mySql.PNG: (0x0) in R[0,0 1024x768]@S(0)
+  Line 2226, in file Region.java
+
+at org.sikuli.script.Region.wait(Region.java:2226)
+at org.sikuli.script.Region.wait(Region.java:2244)
+at org.sikuli.script.Region.getLocationFromTarget(Region.java:3298)
+at org.sikuli.script.Region.click(Region.java:3916)
+at Utillties.CommonOps.checkPlugins(CommonOps.java:151)
+at grafanaTests.grafanaWebTest.test05_checkPlugins(grafanaWebTest.java:35)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:498)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:584)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:172)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:804)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:145)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(ArrayList.java:1249)
+at org.testng.TestRunner.privateRun(TestRunner.java:770)
+at org.testng.TestRunner.run(TestRunner.java:591)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:402)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:396)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:355)
+at org.testng.SuiteRunner.run(SuiteRunner.java:304)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1180)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1102)
+at org.testng.TestNG.runSuites(TestNG.java:1032)
+at org.testng.TestNG.run(TestNG.java:1000)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:283)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:75)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:120)
+at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.sikuli.script.FindFailed -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test05_checkPlugins -->
+        <test-method status="PASS" signature="closeSession(java.lang.String)[pri:0, instance:grafanaTests.grafanaWebTest@c827db]" name="closeSession" is-config="true" duration-ms="149" started-at="2021-12-02T13:40:41 IST" finished-at="2021-12-02T13:40:42 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[web]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeSession -->
+      </class> <!-- grafanaTests.grafanaWebTest -->
+    </test> <!-- Grafana web -->
+  </suite> <!-- Web suite -->
+</testng-results>

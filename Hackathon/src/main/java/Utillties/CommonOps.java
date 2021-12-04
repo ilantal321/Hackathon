@@ -19,7 +19,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.PageFactory;
 import org.sikuli.script.FindFailed;
 import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
@@ -28,7 +27,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
-import pageObjects.calculator.CalculatorPage;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,6 +34,7 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -44,25 +43,24 @@ public class CommonOps extends Base {
     @Parameters({ "PlatformName" ,"Driver"})
     @BeforeClass
     public void startSession(String platformName ,String driver) throws java.net.MalformedURLException, InterruptedException {
-        if (platformName.equals("Desktop")) {
-            initWindowsDriver();
-        }
-        else if (platformName.equals("web") ) {
-            initWebDriver(driver);
-        }
-        else if((platformName.equals("Appium"))){
-            initAndroidDriver();
-        }
-        else if((platformName.equals("API"))){
-            initAPI();
-        }
-        else if((platformName.equals("Electron"))){
-            initElectronDriver();
-        }
-        else if((platformName.equals("Database"))){
-            initDataBase();
-        }
+        platformNameForSC=platformName;
+        switch (platformNameForSC.toUpperCase())
+        {
+            case "DESKTOP":initWindowsDriver();
+            break;
+            case "WEB": initWebDriver(driver);
+                break;
+            case "APPIUM":initAndroidDriver();
+                break;
+            case "API":initAPI();
+                break;
+            case "ELECTRON":initElectronDriver();
+                break;
+            case "DATABASE":initDataBase();
+                break;
 
+        }
+        softAssert = new SoftAssert();
     }
     @Step("API Driver")
     public void initAPI()
@@ -98,11 +96,7 @@ public class CommonOps extends Base {
         ManagerPages.makeDashboardPage();
         grafanaUIActions = new UIActions();
         actions = new Actions(webDriver);
-
-
     }
-
-
     @Step("Open windows driver")
     public void initWindowsDriver() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
@@ -119,8 +113,8 @@ public class CommonOps extends Base {
         dc.setCapability("reportFormat", reportFormat);
         dc.setCapability("testName", testName);
         dc.setCapability(MobileCapabilityType.UDID, "d030a260");
-        Androiddriver = new AndroidDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
-        Androiddriver.setLogLevel(Level.INFO);
+        AndroidDriver = new AndroidDriver<>(new URL(getData("URLAndroid")), dc);
+        AndroidDriver.setLogLevel(Level.INFO);
         ManagerPages.makeAppium();
         ManagerPages.AppiumLivingSection();
         ManagerPages.appiumLivingCurrencySection();
@@ -143,14 +137,9 @@ public void checkPlugins() throws FindFailed {
     actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
     grafanaUIActions.sendKeys(pluginsPage.getInput_searchPlugins(),"mySql");
     actions.moveToElement(pluginsPage.getInput_searchPlugins()).build().perform();
-    try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        e.printStackTrace();
-    }
+    webDriver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
     pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
-    screen.click(pathOfMySqlPic,85);
-    Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
+    screen.click(getData("PathOfMySqlPic"),85);
 }
 
     @Parameters({ "PlatformName" })
@@ -159,10 +148,11 @@ public void checkPlugins() throws FindFailed {
         if (platformName.equals("Desktop")) {
             windowsDriver.close();
         }
-        if (platformName.equals("web")) {
+        else if (platformName.equals("web") || platformName.equals("Electron")) {
             webDriver.close();
-        }if (platformName.equals("Appium")) {
-            Androiddriver.close();
+        }
+        else if (platformName.equals("Appium")) {
+            AndroidDriver.close();
         }
     }
     @Step("check all user have ID")
@@ -172,15 +162,19 @@ public void checkPlugins() throws FindFailed {
         jsonPath=response.jsonPath();
         response.getBody().prettyPrint();
         Verification.verifyInt(response.getStatusCode(),200);
-        softAssert=new SoftAssert();
         List<Integer> usersIsAdmin=jsonPath.getList("id");
         for (int id:usersIsAdmin)
-            softAssert.assertTrue(id>0);
-        softAssert.assertAll();
+            Verification.verifyBig(id,0);
+        Verification.verifyAssertAll();
     }
 
         @Attachment(value = "Page screenshot", type = "image/png")
         public static byte[] saveScreenshot () {
+            if (platformNameForSC.equals("Desktop")) {
+                return ((TakesScreenshot) windowsDriver).getScreenshotAs(OutputType.BYTES);
+            } else if (Base.platformNameForSC.equals("Appium")) {
+                return ((TakesScreenshot) AndroidDriver).getScreenshotAs(OutputType.BYTES);
+            }
             return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
         }
 
@@ -203,10 +197,10 @@ public void checkPlugins() throws FindFailed {
 
     @Step
     public static void initElectronDriver() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\electrondriver-v3.1.2-win32-x64\\electrondriver.exe");
+        System.setProperty("webdriver.chrome.driver","C:\\Automation\\electrondriver.exe");
         opt = new ChromeOptions();
         //opt.setBinary("C:\\Automation\\TodoList-Setup.exe");
-        opt.setBinary("C:\\Users\\User\\AppData\\Local\\Programs\\todolist\\Todolist.exe");
+        opt.setBinary("C:\\Users\\USER\\AppData\\Local\\Programs\\todolist\\Todolist.exe");
         electronDc = new DesiredCapabilities();
         electronDc.setCapability("chromeOptions", opt);
         electronDc.setBrowserName("chrome");
@@ -215,12 +209,13 @@ public void checkPlugins() throws FindFailed {
         actions=new Actions(webDriver);
         ManagerPages.makeToDoListPage();
         grafanaUIActions=new UIActions();
+        sizeOfTasks=0;
     }
 
     @Step
     public void initDataBase(){
         jdbc=new JDBC();
         jdbc.initSQLConnection();
-        softAssert=new SoftAssert();
     }
+
 }

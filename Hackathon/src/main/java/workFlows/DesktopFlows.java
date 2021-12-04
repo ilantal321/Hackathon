@@ -14,7 +14,6 @@ public class DesktopFlows extends CommonOps {
         grafanaUIActions.click(calculatorPage.getBtn_Plus());
         grafanaUIActions.click(calculatorPage.getBtn_Nine());
         grafanaUIActions.click(calculatorPage.getBtn_Equals());
-        Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultAdd"));
     }
     @Step("sub numbers")
     public static void subNumbers(){
@@ -22,7 +21,6 @@ public class DesktopFlows extends CommonOps {
         grafanaUIActions.click(calculatorPage.getBtn_Minus());
         grafanaUIActions.click(calculatorPage.getBtn_One());
         grafanaUIActions.click(calculatorPage.getBtn_Equals());
-        Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultSub"));
     }
     @Step("div numbers")
     public static void divNumbers(){
@@ -30,7 +28,6 @@ public class DesktopFlows extends CommonOps {
         grafanaUIActions.click(calculatorPage.getBtn_DivideBy());
         grafanaUIActions.click(calculatorPage.getBtn_Two());
         grafanaUIActions.click(calculatorPage.getBtn_Equals());
-        Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultDiv"));
     }
     @Step("multi numbers")
     public static void mulNumbers(){
@@ -38,6 +35,5 @@ public class DesktopFlows extends CommonOps {
         grafanaUIActions.click(calculatorPage.getBtn_MultiplyBy());
         grafanaUIActions.click(calculatorPage.getBtn_Five());
         grafanaUIActions.click(calculatorPage.getBtn_Equals());
-        Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultMul"));
     }
 }

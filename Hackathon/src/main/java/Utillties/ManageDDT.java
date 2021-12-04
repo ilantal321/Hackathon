@@ -16,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ManageDDT {
-    @Description("Convert CSV into Object 'table'")
+    //@Description("Convert CSV into Object 'table'")
     public static Object[][] getDataFromCSV(String filePath){
         List<List<String>> csvData = readCSV(filePath);
         int rowSize = csvData.size();
@@ -29,7 +29,7 @@ public class ManageDDT {
         }
         return data;
     }
-    @Description("Read CSV from file path")
+    //@Description("Read CSV from file path")
     public static List<List<String>> readCSV(String filePath) {
         List<List<String>> records = new ArrayList<>();
         try (CSVReader csvReader = new CSVReader(new FileReader(filePath))) {
@@ -43,13 +43,13 @@ public class ManageDDT {
         return records;
     }
     @DataProvider(name = "data-providerApiUsers")
-    @Description("DataProvider: Get Object 'table' from CSV file")
+    //@Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectUsers(){
         return getDataFromCSV("./CSVFiles/apiUsersValuesCSV.csv");
 
     }
     @DataProvider(name = "data-providerApiFolders")
-    @Description("DataProvider: Get Object 'table' from CSV file")
+    //@Description("DataProvider: Get Object 'table' from CSV file")
     public static Object[][] getDataObjectFolders() {
         return getDataFromCSV("./CSVFiles/apiFoldersValuesCSV.csv");
 

@@ -4,12 +4,10 @@ import io.qameta.allure.Step;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-public class JDBC {
+public class JDBC extends CommonOps {
     //String dbUrl="remotemysql.com:3306";
 
-    String dbUrl="jdbc:mysql://remotemysql.com:3306/4hQQDHFqGp";
-    String username="4hQQDHFqGp";
-    String password="n7WCdUznEI";
+
     static Connection con;
     static Statement stmt;
     static ResultSet rs;
@@ -18,7 +16,7 @@ public class JDBC {
     public void initSQLConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(dbUrl,username,password);
+            con = DriverManager.getConnection(getData("DBUrl"),getData("UserNameDB"),getData("PasswordDB"));
             stmt = con.createStatement();
         }
         catch (Exception e) {
@@ -26,7 +24,7 @@ public class JDBC {
         }
     }
 
-    @Step
+    @Step("return a list of teachers")
     public List<String> getCredentials() {
         List<String> credentials = new ArrayList<String>();
         try {

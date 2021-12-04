@@ -5,6 +5,7 @@
     <UserName>admin</UserName>
     <Password>admin</Password>
     <URL>http://localhost:3000/</URL>
+    <URLAndroid>http://localhost:4723/wd/hub</URLAndroid>
     <URLPluginsMySql>plugins/mysql?page=overview</URLPluginsMySql>
     <HomePageTitle>Home - Grafana</HomePageTitle>
     <NewName>ilan</NewName>
@@ -21,4 +22,12 @@
     <TempResult>-1.111111</TempResult>
     <CurrencyResult>ILS</CurrencyResult>
     <Balance>9000</Balance>
+    <pathGetAllUsers>/api/users</pathGetAllUsers>
+    <pathPost_DeleteUser>/api/admin/users/</pathPost_DeleteUser>
+    <pathFolder>/api/folders/</pathFolder>
+    <pathChangePassword>/api/user/password</pathChangePassword>
+    <DBUrl>jdbc:mysql://remotemysql.com:3306/4hQQDHFqGp</DBUrl>
+    <UserNameDB>4hQQDHFqGp</UserNameDB>
+    <PasswordDB>n7WCdUznEI</PasswordDB>
+<PathOfMySqlPic>C:\Hackathon\Hackathon\SikuliPictures\mySql.PNG</PathOfMySqlPic>
 </Env>

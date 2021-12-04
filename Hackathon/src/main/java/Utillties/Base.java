@@ -24,6 +24,9 @@ import pageObjects.unitConverter.livingCurrencySection;
 import pageObjects.unitConverter.livingTempSection;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+
+import java.util.List;
+
 public class Base<reportDirectory, reportFormat, testName> {
     protected static WebDriver webDriver;
     protected static LoginPage loginPage;
@@ -36,8 +39,8 @@ public class Base<reportDirectory, reportFormat, testName> {
     /*
     absolute path relative won't work
      */
-    protected static String pathOfMySqlPic="D:\\bal\\Hackathon\\Hackathon\\SikuliPictures\\mySql.PNG";
     protected static DashboardPage dashboardPage;
+
 
 
     //appium
@@ -47,7 +50,7 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected String reportDirectory = "reports";
     protected String reportFormat = "xml";
     protected String testName = "Untitled";
-    protected static AndroidDriver<AndroidElement> Androiddriver = null;
+    protected static AndroidDriver<AndroidElement> AndroidDriver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
     
     protected static WindowsDriver windowsDriver;
@@ -63,9 +66,18 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static JSONObject param;
     protected static JsonPath jsonPath;
 
+    protected static List<Integer> allUsersId;
+    protected static List<String> allUsersLogin;
+
     //Electron
     protected static ChromeOptions opt;
     protected static DesiredCapabilities electronDc;
     protected static ToDoListPage toDoListPage;
     protected static JDBC jdbc;
+    protected static int sizeOfTasks;
+    protected static String newName;
+    protected static String oldName;
+    protected static int index;
+
+    protected static String platformNameForSC;
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Web suite]">
+  <listeners>
+    <listener class-name="Utillties.Listeners"/>
+  </listeners>
+  <test thread-count="5" verbose="0" name="Grafana web(failed)">
+    <parameter name="PlatformName" value="web"/>
+    <parameter name="Driver" value="Chrome"/>
+    <classes>
+      <class name="grafanaTests.grafanaWebTest">
+        <methods>
+          <include name="test05_checkPlugins"/>
+          <include name="test04_addNewDashboard"/>
+          <include name="Clear"/>
+          <include name="startSession"/>
+          <include name="closeSession"/>
+        </methods>
+      </class> <!-- grafanaTests.grafanaWebTest -->
+    </classes>
+  </test> <!-- Grafana web(failed) -->
+</suite> <!-- Failed suite [Web suite] -->

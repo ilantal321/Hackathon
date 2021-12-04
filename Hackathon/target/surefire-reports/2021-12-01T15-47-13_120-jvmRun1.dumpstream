@@ -1,0 +1,13 @@
+# Created at 2021-12-01T15:50:23.295
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: DEFAULT
+java.io.EOFException
+	at java.io.DataInputStream.readInt(DataInputStream.java:392)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.lang.Thread.run(Thread.java:745)
+
+
+# Created at 2021-12-01T15:50:26.662
+Unexpected IOException: 8,1,grafanaTests.grafanaWebTest,startSession(grafanaTests.grafanaWebTest),null,java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:13143\000ABuild info: version: '3.141.59'\002C revision: 'e82be7d358'\002C time: '2018-11-14T08:17:03'\000ASystem info: host: 'DESKTOP-UT7PC9L'\002C ip: '10.215.130.222'\002C os.name: 'Windows 10'\002C os.arch: 'amd64'\002C os.version: '10.0'\002C java.version: '1.8.0_111'\000ADriver info: driver.version: ChromeDriver,null,java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:13143\000ABuild info: version: '3.141.59'\002C revision: 'e82be7d358'\002C time: '2018-11-14T08:17:03'\000ASystem info: host: 'DESKTOP-UT7PC9L'\002C ip: '10.215.130.222'\002C os.name: 'Windows 10'\002C os.arch: 'amd64'\002C os.version: '10.0'\002C java.version: '1.8.0_111'\000ADriver info: driver.version: ChromeDriver,grafanaWebTest>CommonOps.startSession:52->CommonOps.initWebDriver:80 \00BB WebDriver,org.openqa.selenium.WebDriverException: \000Ajava.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:13143\000ABuild info: version: '3.141.59'\002C revision: 'e82be7d358'\002C time: '2018-11-14T08:17:03'\000ASystem info: host: 'DESKTOP-UT7PC9L'\002C ip: '10.215.130.222'\002C os.name: 'Windows 10'\002C os.arch: 'amd64'\002C os.version: '10.0'\002C java.version: '1.8.0_111'\000ADriver info: driver.version: ChromeDriver\000ACaused by: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:13143\000ACaused by: java.net.ConnectException: Connection refused: connect\000A
+
+

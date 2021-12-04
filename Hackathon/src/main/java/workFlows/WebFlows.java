@@ -14,7 +14,6 @@ public class WebFlows extends CommonOps {
         grafanaUIActions.sendKeys(loginPage.getText_password(),password);
         grafanaUIActions.click(loginPage.getBtn_login());
         grafanaUIActions.click(loginPage.getBtn_skip());
-        Verification.verifyStrings(webDriver.getTitle(), getData("HomePageTitle"));
     }
 
     @Step("add User To Grafana")
@@ -26,7 +25,6 @@ public class WebFlows extends CommonOps {
         grafanaUIActions.sendKeys(loginPage.getText_newUserName(),userName);
         grafanaUIActions.sendKeys(loginPage.getText_newPassword(),password);
         grafanaUIActions.click(loginPage.getBtn_createUser());
-        Verification.verifyElementExist(loginPage.getLabel_NewUserInTable());
     }
     @Step("delete new user in Grafana")
     public static void deleteUserInGrafana(){
@@ -34,7 +32,6 @@ public class WebFlows extends CommonOps {
         grafanaUIActions.click(loginPage.getLabel_NewUserInTable().get(0));
         grafanaUIActions.click(loginPage.getBtn_deleteUser());
         grafanaUIActions.click(loginPage.getBtn_deleteUserMassage());
-        Verification.verifyElementNotExist(loginPage.getLabel_NewUserInTable());
     }
 
     @Step("Create & verify Dashboard")
@@ -47,14 +44,12 @@ public class WebFlows extends CommonOps {
         grafanaUIActions.click(dashboardPage.getBtn_save());
         grafanaUIActions.sendKeys(dashboardPage.getTxt_dashboardName(), "test_dashboard");
         grafanaUIActions.click(dashboardPage.getBtn_finallySave());
-        Verification.verifyNotEqual(String.valueOf(dashboardPage.getDashboards_size().size()),"0");
     }
 
-    @Step
+    @Step("Checks each teacher's balance ")
     public static void assertAll() throws InterruptedException {
         for (int i = 0; i< DBActions.getSizeList(); i++){
-            Verification.verifyBigSoftAssert(Integer.parseInt(DBActions.getCredentials(i)),Integer.parseInt(CommonOps.getData("Balance")));
+                Verification.verifyBigSoftAssert(Integer.parseInt(DBActions.getCredentials(i)),Integer.parseInt(getData("Balance")));
         }
-        softAssert.assertAll();
     }
 }

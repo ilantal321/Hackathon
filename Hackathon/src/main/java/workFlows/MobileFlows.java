@@ -15,13 +15,11 @@ public class MobileFlows extends CommonOps {
         MobileUIActions.click(basicWeightSection.weight_number2);
         MobileUIActions.click(basicWeightSection.weight_selector);
         MobileUIActions.click(basicWeightSection.weight_lb);
-        Assert.assertEquals(basicWeightSection.weight_ozResult.getText(),getData("OZResult"));
     }
     @Step
     public static void livingTempSection(){
         MobileUIActions.click(livingTempSection.living_section);
         MobileUIActions.click(livingTempSection.living_tempTab);
-        Assert.assertEquals(livingTempSection.living_cTemp.getText(),getData("TempResult"));
     }
     @Step
     public static void LivingCurrencySection(){
@@ -30,8 +28,7 @@ public class MobileFlows extends CommonOps {
         MobileUIActions.click(livingCurrencySection.btn_settings);
         MobileUIActions.click(livingCurrencySection.btn_currencyChange);
         MobileUIActions.click(livingCurrencySection.getBtn_ruppeChoose());
-        Androiddriver.navigate().back();
-        Verification.verifyNotEqual(livingCurrencySection.getTxt_INRResult().getText(),getData("CurrencyResult"));
+        AndroidDriver.navigate().back();
     }
 
 
