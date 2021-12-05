@@ -19,7 +19,7 @@ public class grafanaWebTest extends CommonOps {
         Verification.verifyStrings(webDriver.getTitle(), getData("HomePageTitle"));
     }
 
-    @Test(priority = 2,description = "add user")
+    @Test(priority = 2,description = "add user",dependsOnMethods = "test01_loginToGrafana")
     @Description("add a new user and check if it has been added")
     public void test02_addNewUser() {
         WebFlows.addUserTOGrafana(getData("NewName"),getData("NewEmail"),getData("NewUserName"),getData("NewPassword"));
@@ -33,13 +33,14 @@ public class grafanaWebTest extends CommonOps {
         Verification.verifyElementNotExist(loginPage.getLabel_NewUserInTable());
     }
 
-    @Test(priority = 4,description = "add New Dashboard")
+    @Test(priority = 4,description = "add New Dashboard",dependsOnMethods = "test01_loginToGrafana")
+    @Description("add a new dashboard and check if it has been added")
     public void test04_addNewDashboard() throws InterruptedException {
         WebFlows.dashBoardCreateAndVerify();
         Verification.verifyNotEqual(String.valueOf(dashboardPage.getDashboards_size().size()),"0");
     }
 
-   @Test(priority = 5,description = "check plugin mySql")
+   @Test(priority = 5,description = "check plugin mySql",dependsOnMethods = "test01_loginToGrafana")
    @Description("check if plugin mySql is exists (with sikuli)")
     public void test05_checkPlugins() throws FindFailed {
         checkPlugins();

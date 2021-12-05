@@ -154,6 +154,9 @@ public void checkPlugins() throws FindFailed {
         else if (platformName.equals("Appium")) {
             AndroidDriver.close();
         }
+        else if (platformName.equals("Database")) {
+            jdbc.closeDBCon();
+        }
     }
     @Step("check all user have ID")
     public static void checkIfAllUsersHaveID()

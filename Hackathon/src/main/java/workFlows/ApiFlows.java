@@ -27,7 +27,7 @@ import java.util.List;
             ApiActions.makePostRequest(getData("pathFolder"));
             response.getBody().prettyPrint();
         }
-        @Step()
+        @Step("add folder")
         public static void changePassword(String oldPassword,String newPassword)
         {
             addToBodyOfRequest(new Object[][]{{"oldPassword",oldPassword},{"newPassword",newPassword}});

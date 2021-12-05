@@ -30,4 +30,5 @@
     <UserNameDB>4hQQDHFqGp</UserNameDB>
     <PasswordDB>n7WCdUznEI</PasswordDB>
 <PathOfMySqlPic>C:\Hackathon\Hackathon\SikuliPictures\mySql.PNG</PathOfMySqlPic>
+    <StatusCode200>200</StatusCode200>
 </Env>

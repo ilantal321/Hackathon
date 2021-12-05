@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 
 public class MobileFlows extends CommonOps {
-    @Step
+    @Step("check weight")
     public static void basicWeightSection(){
         MobileUIActions.click(basicWeightSection.txt_weight);
         MobileUIActions.click(basicWeightSection.weight_input);
@@ -16,12 +16,12 @@ public class MobileFlows extends CommonOps {
         MobileUIActions.click(basicWeightSection.weight_selector);
         MobileUIActions.click(basicWeightSection.weight_lb);
     }
-    @Step
+    @Step ("check temperature")
     public static void livingTempSection(){
         MobileUIActions.click(livingTempSection.living_section);
         MobileUIActions.click(livingTempSection.living_tempTab);
     }
-    @Step
+    @Step ("check currency")
     public static void LivingCurrencySection(){
         MobileUIActions.click(livingCurrencySection.getLivingC_currency());
         MobileUIActions.click(livingCurrencySection.btn_mainMenu);

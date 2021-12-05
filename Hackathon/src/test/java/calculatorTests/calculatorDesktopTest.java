@@ -1,6 +1,7 @@
 package calculatorTests;
 import Utillties.CommonOps;
 import Utillties.Verification;
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
@@ -19,23 +20,27 @@ import workFlows.DesktopFlows;
 import static org.testng.AssertJUnit.fail;
 
 public class calculatorDesktopTest extends CommonOps{
-    @Test
+    @Test(priority = 1,description = "check add function")
+    @Description("check add function on calculator desktop ")
     public void Test01Add() {
-            DesktopFlows.addNumbers();
+        DesktopFlows.addNumbers();
         Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultAdd"));
     }
-    @Test
+    @Test(priority = 2,description = "check sub function")
+    @Description("check sub function on calculator desktop ")
     public void Test02Sub() {
         DesktopFlows.subNumbers();
         Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultSub"));
     }
-    @Test
+    @Test(priority = 3,description = "check div function")
+    @Description("check div function on calculator desktop ")
     public void Test03Div() {
         DesktopFlows.divNumbers();
         Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultDiv"));
     }
 
-    @Test
+    @Test(priority = 4,description = "check multi function")
+    @Description("check multi function on calculator desktop ")
     public void Test04Multi() {
         DesktopFlows.mulNumbers();
         Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultMul"));
