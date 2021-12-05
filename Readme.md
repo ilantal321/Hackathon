@@ -61,3 +61,6 @@ A final project in Java for testing automation boot-camp. the program have a All
 - edit name
 - delete task
 - all tasks are complete
+
+
+![caption](https://github.com/ilantal321/videos/blob/main/_Todolist_%202021-12-05%2015-13-00.gif)
