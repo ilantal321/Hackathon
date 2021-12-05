@@ -4,15 +4,13 @@ import io.qameta.allure.Step;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import static Utillties.ManageTestValuesFile.getData;
+
 public class JDBC extends CommonOps {
     //String dbUrl="remotemysql.com:3306";
 
 
-    static Connection con;
-    static Statement stmt;
-    static ResultSet rs;
-
-    @Step
+    @Step("connect to Database")
     public void initSQLConnection() {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -39,7 +37,7 @@ public class JDBC extends CommonOps {
         return credentials;
     }
 
-    @Step
+    @Step("close connection to Database")
     public void closeDBCon() {
         try {
             con.close();

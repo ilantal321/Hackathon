@@ -25,6 +25,9 @@ import pageObjects.unitConverter.livingTempSection;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.List;
 
 public class Base<reportDirectory, reportFormat, testName> {
@@ -80,4 +83,9 @@ public class Base<reportDirectory, reportFormat, testName> {
     protected static int index;
 
     protected static String platformNameForSC;
+
+
+    protected static Connection con;
+    protected static Statement stmt;
+    protected static ResultSet rs;
 }

@@ -7,6 +7,8 @@ import io.qameta.allure.Description;
 import org.testng.annotations.Test;
 import workFlows.ApiFlows;
 
+import static Utillties.ManageTestValuesFile.getData;
+
 public class GrafanaApiTest extends CommonOps {
     @Test(priority = 1,dataProvider = "data-providerApiUsers",dataProviderClass = ManageDDT.class)
     @Description("add a new users from CSV file")
@@ -32,7 +34,7 @@ public class GrafanaApiTest extends CommonOps {
     @Description("check if all users have a positive id (with softAssert)")
     public void test04_checkIfAllUsersHaveID()
     {
-        checkIfAllUsersHaveID();
+        ApiFlows.checkIfAllUsersHaveID();
         Verification.verifyAssertAll();
     }
     @Test(priority = 5,dataProvider = "data-providerApiFolders",dataProviderClass = ManageDDT.class)

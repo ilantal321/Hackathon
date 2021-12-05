@@ -29,6 +29,6 @@
     <DBUrl>jdbc:mysql://remotemysql.com:3306/4hQQDHFqGp</DBUrl>
     <UserNameDB>4hQQDHFqGp</UserNameDB>
     <PasswordDB>n7WCdUznEI</PasswordDB>
-<PathOfMySqlPic>C:\Hackathon\Hackathon\SikuliPictures\mySql.PNG</PathOfMySqlPic>
+<PathOfMySqlPic>D:\Hackathon\Hackathon\Hackathon\SikuliPictures\mySql.PNG</PathOfMySqlPic>
     <StatusCode200>200</StatusCode200>
 </Env>

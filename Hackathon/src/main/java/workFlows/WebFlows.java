@@ -6,7 +6,7 @@ import Utillties.Verification;
 import extensions.DBActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
-
+import static Utillties.ManageTestValuesFile.getData;
 public class WebFlows extends CommonOps {
     @Step("Login to Grafana")
     public static void loginToGrafana(String userName, String password){

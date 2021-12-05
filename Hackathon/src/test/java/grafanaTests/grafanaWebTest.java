@@ -6,7 +6,7 @@ import io.qameta.allure.Description;
 import org.sikuli.script.FindFailed;
 import org.testng.annotations.Test;
 import workFlows.WebFlows;
-
+import static Utillties.ManageTestValuesFile.getData;
 import static org.testng.AssertJUnit.fail;
 
 public class grafanaWebTest extends CommonOps {
@@ -44,7 +44,7 @@ public class grafanaWebTest extends CommonOps {
    @Description("check if plugin mySql is exists (with sikuli)")
     public void test05_checkPlugins() throws FindFailed {
         checkPlugins();
-       Verification.verifyStrings(webDriver.getCurrentUrl(),getData("UL")+getData("URLPluginsMySql"));
+       Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
     }
 
 }

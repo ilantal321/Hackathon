@@ -38,6 +38,8 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+import static Utillties.ManageTestValuesFile.getData;
+
 public class CommonOps extends Base {
 
     @Parameters({ "PlatformName" ,"Driver"})
@@ -158,18 +160,7 @@ public void checkPlugins() throws FindFailed {
             jdbc.closeDBCon();
         }
     }
-    @Step("check all user have ID")
-    public static void checkIfAllUsersHaveID()
-    {
-        ApiActions.makeGetRequest("/api/users");
-        jsonPath=response.jsonPath();
-        response.getBody().prettyPrint();
-        Verification.verifyInt(response.getStatusCode(),200);
-        List<Integer> usersIsAdmin=jsonPath.getList("id");
-        for (int id:usersIsAdmin)
-            Verification.verifyBig(id,0);
-        Verification.verifyAssertAll();
-    }
+
 
         @Attachment(value = "Page screenshot", type = "image/png")
         public static byte[] saveScreenshot () {
@@ -181,21 +172,7 @@ public void checkPlugins() throws FindFailed {
             return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
         }
 
-    public static String getData (String nodeName) {
-        DocumentBuilder dBuilder;
-        Document doc = null;
-        File fXmlFile = new File("./TestValues.xml");
-        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        try {
-            dBuilder = dbFactory.newDocumentBuilder();
-            doc = dBuilder.parse(fXmlFile);
-        }
-        catch(Exception e) {
-            System.out.println("Exception in reading XML file: " + e);
-        }
-        doc.getDocumentElement().normalize();
-        return doc.getElementsByTagName(nodeName).item(0).getTextContent();
-    }
+
 
 
     @Step

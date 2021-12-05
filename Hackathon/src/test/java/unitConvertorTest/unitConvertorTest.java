@@ -6,7 +6,7 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import workFlows.MobileFlows;
-
+import static Utillties.ManageTestValuesFile.getData;
 public class unitConvertorTest extends CommonOps {
     @Test(priority = 1,description = "check weight function")
     @Description("check weight function on appium mobile")

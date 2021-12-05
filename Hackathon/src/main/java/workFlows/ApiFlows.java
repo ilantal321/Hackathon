@@ -9,7 +9,7 @@ import io.restassured.RestAssured;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
-
+import static Utillties.ManageTestValuesFile.getData;
 import java.awt.*;
 import java.util.List;
     public class ApiFlows extends CommonOps {
@@ -64,5 +64,16 @@ import java.util.List;
             }
         }
 
-
+        @Step("check all user have ID")
+        public static void checkIfAllUsersHaveID()
+        {
+            ApiActions.makeGetRequest("/api/users");
+            jsonPath=response.jsonPath();
+            response.getBody().prettyPrint();
+            Verification.verifyInt(response.getStatusCode(),200);
+            List<Integer> usersIsAdmin=jsonPath.getList("id");
+            for (int id:usersIsAdmin)
+                Verification.verifyBig(id,0);
+            Verification.verifyAssertAll();
+        }
 }
