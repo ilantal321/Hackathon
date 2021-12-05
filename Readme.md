@@ -30,6 +30,8 @@ A final project in Java for testing automation boot-camp. the program have a All
 - check currency 
 
 
+![caption](https://github.com/ilantal321/videos/blob/main/Screenrecorder-2021-12-05-12-47-19-986(0).gif)
+
 
 <h5>Server API: Grafana with reading from CSV file:</h5>
 
