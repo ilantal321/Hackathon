@@ -3,8 +3,14 @@
 <p>
 A final project in Java for testing automation boot-camp. the program have a Allure report, listeners with screenshot and video file on faild test. 
 </p>
-<h4>In this project we programed a testing infrastructure for:</h4>
 
+
+## Built With
+- IntelliJ
+- Jenkins
+
+## Tests Description
+<h4>In this project we programed a testing infrastructure for:</h4>
 <h5>Selenium web: Grafana:</h5>
 
 
@@ -13,6 +19,8 @@ A final project in Java for testing automation boot-camp. the program have a All
 - delete user
 - add dashboard
 - search plugin (Sikuli)
+
+![caption](https://github.com/ilantal321/videos/blob/main/Grafana%20-%20Google%20Chrome%202021-12-05%2012-08-25.gif)
 
 
 <h5>Appium: Unit Converter:</h5>
@@ -38,6 +46,7 @@ A final project in Java for testing automation boot-camp. the program have a All
 - div
 - multi
 
+![caption](https://github.com/ilantal321/videos/blob/main/Calculator%202021-12-05%2012-16-40.gif)
 <h5>Database: remoteMySQL</h5>
 
 - soft assert all salaries are above 9000
