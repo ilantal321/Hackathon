@@ -36,6 +36,7 @@ A final project in Java for testing automation boot-camp. the program have a All
 <h5>Server API: Grafana with reading from CSV file:</h5>
 
 - add user
+- delete user
 - change password
 - check if all users have ID
 - add folders
