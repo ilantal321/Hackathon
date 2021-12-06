@@ -66,6 +66,19 @@ A final project in Java for testing automation boot-camp. the program have a All
 ![caption](https://github.com/ilantal321/videos/blob/main/_Todolist_%202021-12-05%2015-13-00.gif)
 
 
+## Authors
+**Ilan Tal**
+- [GitHub](https://github.com/ilantal321 "Ilan Tal")
+
+**Ebrahem Mahajna**
+- [GitHub](https://github.com/evra3 "Ebrahem Mahajna")
+
+**Tehila Yfee**
+- [GitHub](https://github.com/tehilaYfee "Tehila Yfee")
+
+**Shira Bezalel**
+- [GitHub](https://github.com/s0534100761 "Shira Bezalel")
+
 ## 🤝 Support
 
 Contributions, issues, and feature requests are welcome!
