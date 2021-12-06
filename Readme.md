@@ -64,3 +64,10 @@ A final project in Java for testing automation boot-camp. the program have a All
 
 
 ![caption](https://github.com/ilantal321/videos/blob/main/_Todolist_%202021-12-05%2015-13-00.gif)
+
+
+## 🤝 Support
+
+Contributions, issues, and feature requests are welcome!
+
+Give a ⭐️ if you like this project!
