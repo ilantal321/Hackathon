@@ -91,7 +91,7 @@ public class CommonOps extends Base {
         ManagerPages.makePOPluginsPage();
         ManagerPages.makeDashboardPage();
         screen = new Screen();
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         grafanaUIActions = new UIActions();
 
         //dashboard

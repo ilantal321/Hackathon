@@ -41,14 +41,16 @@ public class Listeners implements ITestListener {
     @Override
     public void onTestFailure(ITestResult arg0) {
         System.out.println("------------------Failure Test: " + arg0.getName() + "-------------------------");
-        if (Base.platformNameForSC.equals("web")) {
-                CommonOps.saveScreenshot();
-            try {
-                MonteScreenRecorder.stopRecord();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (Base.platformNameForSC.equals("web")||Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium")) {
+            CommonOps.saveScreenshot();
+            if (Base.platformNameForSC.equals("web"))
+                try {
+                    MonteScreenRecorder.stopRecord();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
         }
+
     }
 
     @Override
