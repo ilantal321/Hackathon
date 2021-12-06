@@ -6,6 +6,10 @@ import Utillties.Verification;
 import extensions.DBActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
+import org.sikuli.script.FindFailed;
+
+import java.util.concurrent.TimeUnit;
+
 import static Utillties.ManageTestValuesFile.getData;
 public class WebFlows extends CommonOps {
     @Step("Login to Grafana")
@@ -51,5 +55,15 @@ public class WebFlows extends CommonOps {
         for (int i = 0; i< DBActions.getSizeList(); i++){
                 Verification.verifyBigSoftAssert(Integer.parseInt(DBActions.getCredentials(i)),Integer.parseInt(getData("Balance")));
         }
+    }
+    @Step("check if plugin mySql found when search it")
+    public static void checkPlugins() throws FindFailed {
+        webDriver.get(getData("URL"));
+        actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
+        grafanaUIActions.sendKeys(pluginsPage.getInput_searchPlugins(),"mySql");
+        actions.moveToElement(pluginsPage.getInput_searchPlugins()).build().perform();
+        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
+        screen.click(getData("PathOfMySqlPic"),85);
     }
 }

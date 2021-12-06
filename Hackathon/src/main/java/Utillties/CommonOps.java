@@ -133,16 +133,7 @@ public class CommonOps extends Base {
         }
     }
 
-@Step("check if plugin mySql found when search it")
-public void checkPlugins() throws FindFailed {
-    webDriver.get(getData("URL"));
-    actions.moveToElement(menuComponent.getSvg_Configuration()).click(menuComponent.getA_plugins()).build().perform();
-    grafanaUIActions.sendKeys(pluginsPage.getInput_searchPlugins(),"mySql");
-    actions.moveToElement(pluginsPage.getInput_searchPlugins()).build().perform();
-    webDriver.manage().timeouts().implicitlyWait(3,TimeUnit.SECONDS);
-    pluginsPage.getInput_searchPlugins().sendKeys(Keys.ENTER);
-    screen.click(getData("PathOfMySqlPic"),85);
-}
+
 
     @Parameters({ "PlatformName" })
     @AfterClass

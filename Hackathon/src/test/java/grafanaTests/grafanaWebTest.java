@@ -43,7 +43,7 @@ public class grafanaWebTest extends CommonOps {
    @Test(priority = 5,description = "check plugin mySql",dependsOnMethods = "test01_loginToGrafana")
    @Description("check if plugin mySql is exists (with sikuli)")
     public void test05_checkPlugins() throws FindFailed {
-        checkPlugins();
+        WebFlows.checkPlugins();
        Verification.verifyStrings(webDriver.getCurrentUrl(),getData("URL")+getData("URLPluginsMySql"));
     }
 
