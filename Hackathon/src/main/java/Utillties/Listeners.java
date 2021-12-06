@@ -16,7 +16,7 @@ public class Listeners implements ITestListener {
     @Override
     public void onTestStart(ITestResult arg0) {
         System.out.println("------------------Starting Test: " + arg0.getName() + "-------------------------");
-        if (Base.platformNameForSC.equals("web")) {
+        if (Base.platformNameForSC.equals("web") || Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium")||Base.platformNameForSC.equals("Electron")) {
             try {
                 MonteScreenRecorder.startRecord(arg0.getName());
             } catch (Exception e) {
@@ -27,7 +27,7 @@ public class Listeners implements ITestListener {
     @Override
     public void onTestSuccess(ITestResult arg0) {
         System.out.println("------------------Success Test: " + arg0.getName() + "-------------------------");
-        if (Base.platformNameForSC.equals("web")) {
+        if (Base.platformNameForSC.equals("web") || Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium")||Base.platformNameForSC.equals("Electron")){
             try {
                 MonteScreenRecorder.stopRecord();
             } catch (Exception e) {
@@ -41,9 +41,9 @@ public class Listeners implements ITestListener {
     @Override
     public void onTestFailure(ITestResult arg0) {
         System.out.println("------------------Failure Test: " + arg0.getName() + "-------------------------");
-        if (Base.platformNameForSC.equals("web")||Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium")) {
+        if (Base.platformNameForSC.equals("web")||Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium")||Base.platformNameForSC.equals("Electron")) {
             CommonOps.saveScreenshot();
-            if (Base.platformNameForSC.equals("web"))
+            if (Base.platformNameForSC.equals("web")||Base.platformNameForSC.equals("Desktop")||Base.platformNameForSC.equals("Appium") ||Base.platformNameForSC.equals("Electron"))
                 try {
                     MonteScreenRecorder.stopRecord();
                 } catch (Exception e) {

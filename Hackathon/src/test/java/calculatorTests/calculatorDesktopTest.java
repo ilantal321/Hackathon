@@ -26,7 +26,6 @@ public class calculatorDesktopTest extends CommonOps{
     public void Test01Add() {
         DesktopFlows.addNumbers();
         Verification.verifyStrings(calculatorPage.getBtn_Results().getText().substring(11),getData("ResultAdd"));
-        fail();
     }
     @Test(priority = 2,description = "check sub function")
     @Description("check sub function on calculator desktop ")
